@@ -35,7 +35,10 @@ class DetailslMonth extends StatelessWidget {
                         ? const Center(child: CircularProgressIndicator())
                         : controller.responseDataMes.isEmpty
                             ? Center(
-                                child: Text('${controller.statusMessageMonth}'),
+                                child: Text('${controller.statusMessageMonth}',
+                                    style: AppTextStyle(context).medium14(
+                                      color: AppColors.grayBlue,
+                                    )),
                               )
                             : ListView.separated(
                                 padding: const EdgeInsets.only(

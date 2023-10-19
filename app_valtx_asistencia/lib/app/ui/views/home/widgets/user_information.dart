@@ -16,7 +16,7 @@ class UserInformation extends StatelessWidget {
         builder: (controller) => Container(
             height: MediaQuery.of(context).size.height * 0.1,
             width: double.infinity,
-            margin:  EdgeInsets.symmetric(horizontal: kMarginApp.w),
+            margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(10.0),
@@ -66,22 +66,6 @@ class UserInformation extends StatelessWidget {
                           ),
                         ],
                       ),
-                      /* trailing: GestureDetector(
-                        onTap: () => controller.loginout(),
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: const BoxDecoration(
-                            color: AppColors.degradedInitial,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Iconsax.login,
-                            color: Colors.white,
-                            size: 25.0,
-                          ),
-                        ),
-                      ), */
                     );
             })));
   }

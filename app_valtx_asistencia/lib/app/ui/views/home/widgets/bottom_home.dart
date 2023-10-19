@@ -45,7 +45,10 @@ class BottomHome extends StatelessWidget {
                             : controller.responseUserAssistanceMonth.isEmpty
                                 ? Center(
                                     child: Text(
-                                        '${controller.statusMessageMonth}'),
+                                        '${controller.statusMessageMonth}',
+                                        style: AppTextStyle(context).medium14(
+                                          color: AppColors.grayBlue,
+                                        )),
                                   )
                                 : ListView.separated(
                                     padding: const EdgeInsets.only(

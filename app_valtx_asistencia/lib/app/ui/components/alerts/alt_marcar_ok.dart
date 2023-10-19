@@ -1,6 +1,7 @@
 import 'package:app_valtx_asistencia/app/ui/components/alert_dialog_component.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
+import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,18 +20,17 @@ class AltMarcarOk extends StatelessWidget {
                 onTapButton: () {
                   Get.back();
                 },
-                widgetContent: Container(
+                widgetContent: /* Container(
                   height: 200,
-                  child: Column(children: [
-                    Text(
-                      'Asistencia registrada como: $registradoComo',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20.0,
-                        color: AppColors.blueDark,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
+                  child:  */
+                    Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Asistencia registrada como: $registradoComo',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle(context).bold16(
+                          color: AppColors.primary,
+                        )),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -48,8 +48,9 @@ class AltMarcarOk extends StatelessWidget {
                         ),
                       ],
                     )
-                  ]),
+                  ],
                 ),
+                /* ), */
                 isOnlyPrimary: true,
                 textPrimaryButton: "OK",
               );

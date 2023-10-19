@@ -1,4 +1,3 @@
-
 import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -69,7 +68,7 @@ class FieldForm extends StatelessWidget {
         suffixIcon: suffix,
         suffixIconColor: AppColors.primary,
         floatingLabelStyle: AppTextStyle(context).medium14(
-          color: AppColors.primary,
+          color: AppColors.grayBlue,
           size: 14.0,
         ),
         labelStyle: AppTextStyle(context).medium14(

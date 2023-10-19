@@ -19,22 +19,20 @@ class ContentWeekHome extends StatelessWidget {
       builder: (controller) => Container(
         margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
         decoration: BoxDecoration(
-           boxShadow: [
-              BoxShadow(
-                color: AppColors.grayBlue.withOpacity(0.1),
-                spreadRadius: 4,
-                blurRadius: 7,
-                offset: const Offset(0, 3),
-              ),
-            ],
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.grayBlue.withOpacity(0.1),
+              spreadRadius: 4,
+              blurRadius: 7,
+              offset: const Offset(0, 3),
+            ),
+          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              //margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
-              //height: MediaQuery.of(context).size.height * 0.03,
               padding: const EdgeInsets.all(10.0),
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -81,7 +79,10 @@ class ContentWeekHome extends StatelessWidget {
                       ? const Center(child: CircularProgressIndicator())
                       : controller.responseUserAssistanceWeek.isEmpty
                           ? Center(
-                              child: Text('${controller.statusMessageWeek}'),
+                              child: Text('${controller.statusMessageWeek}',
+                                  style: AppTextStyle(context).medium14(
+                                    color: AppColors.grayBlue,
+                                  )),
                             )
                           : ListView.separated(
                               scrollDirection: Axis.horizontal,

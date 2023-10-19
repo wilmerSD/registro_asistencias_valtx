@@ -330,16 +330,16 @@ class Helpers {
     Color circleColor;
     switch (idValidacion) {
       case 1:
-        circleColor = AppColors.green;
+        circleColor = AppColors.validationTimely;
         break;
       case 2:
-        circleColor = AppColors.yellow;
+        circleColor = AppColors.validationLate;
         break;
       case 3:
-        circleColor = AppColors.red;
+        circleColor = AppColors.validationMissing;
         break;
       default:
-        circleColor = AppColors.grey;
+        circleColor = AppColors.validationJustified;
         break;
     }
     return circleColor;
@@ -409,9 +409,9 @@ class Helpers {
           builder: (BuildContext context) {
             return Obx(() => controller.isLoading.value
                 ? const Center(child: CircularProgressIndicator())
-                    : controller.statusAssistance.value
-                        ?const AltMarcarOk()
-                        :const AltMarcarBad() );
+                : controller.statusAssistance.value
+                    ? const AltMarcarOk()
+                    : const AltMarcarBad());
           },
         );
       }
@@ -430,11 +430,11 @@ class Helpers {
       backgroundColor: AppColors.red,
       titleText: Text(
         title,
-        style: AppTextStyle(context).bold16(color: Colors.white),
+        style: AppTextStyle(context).bold16(color: AppColors.backgroundColor),
       ),
       messageText: Text(
         message,
-        style: AppTextStyle(context).medium14(color: Colors.white),
+        style: AppTextStyle(context).medium14(color: AppColors.backgroundColor),
       ),
     );
   }
@@ -462,7 +462,7 @@ class Helpers {
                   height: 10.h,
                   margin: EdgeInsets.only(bottom: 10.h),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.backgroundColor,
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                 ),
@@ -472,7 +472,7 @@ class Helpers {
                     vertical: 15.0,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.backgroundColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(kRadiusNormal.r),
                       topRight: Radius.circular(kRadiusNormal.r),

@@ -85,18 +85,6 @@ class AppBarHome extends StatelessWidget {
                         style: AppTextStyle(context)
                             .medium14(color: AppColors.grayBlue),
                       ),
-                      /*  Container(
-                              height: MediaQuery.of(context).size.height * 0.04,
-                              width: MediaQuery.of(context).size.width * 0.1,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.contentNotification,
-                              ),
-                              child: const Icon(
-                                Iconsax.notification,
-                                color: AppColors.blueDark,
-                              ),
-                            ), */
                     ],
                   ),
                 ),

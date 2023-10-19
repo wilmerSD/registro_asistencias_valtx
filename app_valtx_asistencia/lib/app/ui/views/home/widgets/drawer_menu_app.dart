@@ -73,58 +73,6 @@ class DrawerMenuApp extends GetView<HomeController> {
                   ),
                 ),
               ),
-
-              /* Expanded(
-								child: SizedBox(
-									width: double.infinity,
-									child: DrawerHeader(
-										decoration: const BoxDecoration(
-											border: Border(
-												bottom: BorderSide(
-													color: AppColors.black,
-													width: 0.1,
-												),
-											),
-										),
-										child: Column(
-											children: [
-												CircleAvatar(
-													radius: 25.r,
-													/* backgroundImage:
-														const AssetImage("assets/icons/avatar.png"), */
-												),
-												Text(
-													"Hola,",
-													/* style: Theme.of(context)
-														.textTheme
-														.headline6
-														?.copyWith(
-															color: AppTheme.kTitle,
-															fontWeight: FontWeight.bold), */
-												),
-												SizedBox(height: 5.h),
-												/* Obx(
-													() => Text(
-														"${_.nameUser}",
-														style: Theme.of(context)
-															.textTheme
-															.caption
-															?.copyWith(color: AppTheme.kMidlleTitle),
-													),
-													), */
-											],
-										),
-									),
-								),
-								),
-								Expanded(
-									flex: 3,
-									child: Column(
-										children: [
-
-										],
-									)
-								), */
             ],
           ),
         ),

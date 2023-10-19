@@ -22,7 +22,7 @@ class AppTextStyle {
           .titleLarge!
           .copyWith(color: color, fontWeight: FontWeight.w700, fontSize: 24.0);
 
-  TextStyle bold16({Color? color = AppColors.black}) => Theme.of(context)
+  TextStyle bold16({Color? color = AppColors.grayDark}) => Theme.of(context)
       .textTheme
       .bodyMedium!
       .copyWith(color: color, fontWeight: FontWeight.w700, fontSize: 16.sp);

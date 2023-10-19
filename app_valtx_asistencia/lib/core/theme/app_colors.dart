@@ -6,7 +6,13 @@ class AppColors {
   static const Color red = Color.fromRGBO(231, 44, 49, 1.0);
   static const Color orange = Color.fromRGBO(242, 140, 3, 1.0);
   static const Color grayLight = Color.fromRGBO(230, 230, 241, 1);
-  static const Color grayBlue = Color.fromRGBO(146, 146, 187, 1);
+  static const Color grayBlue = Color.fromRGBO(125, 126, 138, 1);
+  static const Color radiusMap = Color.fromRGBO(38, 52, 113, 0.219);
+  //----------------------------------------------------------------
+  static const Color validationTimely = Color.fromRGBO(0, 196, 140, 1);
+  static const Color validationMissing = Color.fromRGBO(231, 44, 49, 1);
+  static const Color validationLate = Color.fromRGBO(239, 202, 102, 1);
+  static const Color validationJustified = Color.fromRGBO(242, 140, 3, 1);
 
   //----------------------------------------------------------------
   static const Color degradedInitial = Color.fromARGB(255, 247, 85, 45);
@@ -62,7 +68,6 @@ class AppColors {
       colors: [green03, green03],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight);
-
 
   //----------------------------------------------------------------
   static const String mapStyles = '''[

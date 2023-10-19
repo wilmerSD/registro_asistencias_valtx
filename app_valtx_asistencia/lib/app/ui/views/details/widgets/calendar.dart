@@ -12,7 +12,7 @@ class Calendar extends StatelessWidget {
     return GetBuilder<DetailsController>(
       builder: (controller) => Stack(
         alignment: AlignmentDirectional.topStart,
-        children: [  
+        children: [
           Center(
             child: Container(
               margin: const EdgeInsets.only(top: 3),

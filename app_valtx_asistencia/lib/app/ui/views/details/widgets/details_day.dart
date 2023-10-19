@@ -21,7 +21,10 @@ class DetailsDay extends StatelessWidget {
                     ? const Center(child: CircularProgressIndicator())
                     : controller.responseDataDia.isEmpty
                         ? Center(
-                            child: Text('${controller.statusMessageDay}'),
+                            child: Text('${controller.statusMessageDay}',
+                                style: AppTextStyle(context).medium14(
+                                  color: AppColors.grayBlue,
+                                )),
                           )
                         : Row(
                             mainAxisSize: MainAxisSize.max,

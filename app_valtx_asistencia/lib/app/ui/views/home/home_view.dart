@@ -1,13 +1,10 @@
-import 'package:app_valtx_asistencia/app/ui/components/alert_dialog_component.dart';
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_error.dart';
 import 'package:app_valtx_asistencia/app/ui/components/btn_primary_ink.dart';
-import 'package:app_valtx_asistencia/app/ui/components/buttons/btn_marcar.dart';
 import 'package:app_valtx_asistencia/app/ui/components/dashed_line.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/home/content_week_home.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/home/appBar_home.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/home/bottom_home.dart';
 import 'package:app_valtx_asistencia/app/ui/components/views/home/map_view.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/home/user_information.dart';
+import 'package:app_valtx_asistencia/app/ui/views/home/widgets/content_week_home.dart';
+import 'package:app_valtx_asistencia/app/ui/views/home/widgets/appBar_home.dart';
+import 'package:app_valtx_asistencia/app/ui/views/home/widgets/bottom_home.dart';
+import 'package:app_valtx_asistencia/app/ui/views/home/widgets/user_information.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/widgets/drawer_menu_app.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/widgets/list_type_mark.dart';
@@ -66,14 +63,7 @@ class HomeView extends StatelessWidget {
                     },
                   ),
                 ),
-                /* BtnMarcar(
-									OnTap: () {
-										helpers.showTypesMarkingDialog(context, controller);
-										controller.getCurrentLocation();
-										controller.getNameLocation();
-									},
-									title: 'Marcar',
-								), */
+
                 const SizedBox(
                   height: 10.0,
                 ),
