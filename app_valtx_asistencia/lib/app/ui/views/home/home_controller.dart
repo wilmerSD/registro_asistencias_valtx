@@ -16,6 +16,7 @@ import 'package:app_valtx_asistencia/app/repositories/register_marking_user_repo
 import 'package:app_valtx_asistencia/app/repositories/types_assistances_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/user_repositori.dart';
 import 'package:app_valtx_asistencia/routes/app_routes_name.dart';
+import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -159,7 +160,7 @@ class HomeController extends GetxController {
   //Asistencia de la semana
   _getAssistancesWeekhUser() async {
     isLoading.value = true;
-    try{
+    try {
       String Iduser = await StorageService.get(Keys.kIdUser);
       isLoading.value = true;
       final response = await _assistancesWeekUserRepository.getAssistancesWeek(
@@ -174,7 +175,7 @@ class HomeController extends GetxController {
         print("error: ${response.statusMessage}");
         return;
       }
-    }catch (error) {
+    } catch (error) {
       isLoading.value = false;
       isVisible.value = true;
       messageError.value =
@@ -184,7 +185,7 @@ class HomeController extends GetxController {
 
   //Registrar asistencia
   assistMarker(int selectedValue) async {
-    try{
+    try {
       isLoading.value = true;
       String Iduser = await StorageService.get(Keys.kIdUser);
       final response = await _registerMarkingUser.postRegisterMarking(
@@ -197,13 +198,14 @@ class HomeController extends GetxController {
       isLoading.value = false;
       statusAssistance.value = response.success;
       statusMessageUserAssistance.value = response.statusMessage;
+      responseUserAssistance.value = response.data;
       if (!response.success) {
         print("error: ${response.statusMessage}");
         return;
       }
       _getAssistancesMonthUser();
       _getAssistancesWeekhUser();
-    }catch (error) {
+    } catch (error) {
       isLoading.value = false;
       isVisible.value = true;
       messageError.value =
