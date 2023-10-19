@@ -1,3 +1,4 @@
+import 'package:app_valtx_asistencia/app/ui/components/alert_dialog_component.dart';
 import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_error.dart';
 import 'package:app_valtx_asistencia/app/ui/components/btn_primary_ink.dart';
 import 'package:app_valtx_asistencia/app/ui/components/buttons/btn_marcar.dart';
@@ -9,7 +10,9 @@ import 'package:app_valtx_asistencia/app/ui/components/views/home/map_view.dart'
 import 'package:app_valtx_asistencia/app/ui/components/views/home/user_information.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/widgets/drawer_menu_app.dart';
+import 'package:app_valtx_asistencia/app/ui/views/home/widgets/list_type_mark.dart';
 import 'package:app_valtx_asistencia/core/helpers/constant.dart';
+import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +57,10 @@ class HomeView extends StatelessWidget {
                         : "Marcar",
                     loading: controller.isLoading.value,
                     onTap: () {
-                      helpers.showTypesMarkingDialog(context, controller);
+                      /* -helpers.showTypesMarkingDialog(context, controller); */
+                      Helpers.getShowModalBS(context,
+                          title: 'Seleccionar tipo de marcación',
+                          content: ListTypeMark());
                       controller.getCurrentLocation();
                       controller.getNameLocation();
                     },
