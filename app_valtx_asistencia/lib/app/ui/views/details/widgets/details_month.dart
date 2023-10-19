@@ -1,15 +1,15 @@
-import 'package:app_valtx_asistencia/app/ui/views/marcaciones/detail_controller.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BottomDetail extends StatelessWidget {
-  const BottomDetail({Key? key}) : super(key: key);
+class DetailslMonth extends StatelessWidget {
+  const DetailslMonth({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DetailController>(
+    return GetBuilder<DetailsController>(
         builder: (controller) => Column(
               children: [
                 Container(

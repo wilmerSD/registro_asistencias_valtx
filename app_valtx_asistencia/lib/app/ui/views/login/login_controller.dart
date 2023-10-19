@@ -47,7 +47,7 @@ class LoginController extends GetxController {
     isVisible.value ? isVisible.value = false : isVisible.value = true;
   }
 
-    void validateForm(BuildContext context) {
+  void validateForm(BuildContext context) {
     FocusScope.of(context).unfocus();
     if (ctrlEmailText.text.trim() == "" || ctrlPasswordText.text.trim() == "") {
       Helpers.showSnackBar(
@@ -74,7 +74,6 @@ class LoginController extends GetxController {
       messageError.value = response.statusMessage;
       if (!response.success) {
         isVisible.value = true;
-        //Get.forceAppUpdate();
         Helpers.showSnackBar(
         Get.context!,
         title: "Validar",
@@ -92,14 +91,13 @@ class LoginController extends GetxController {
       //Ir a nueva ruta y eliminar de memoria controllers existentes
       Get.offNamed(AppRoutesName.HOME);
     } catch (error) {
-      isLoading.value = false;
       isVisible.value = true;
-      if (error is DioException) {
-        messageError.value = 'ERROR: ${error.response?.data['message']}';
-      } else {
-        messageError.value =
-            'Ha ocurrido un error, por favor inténtelo de nuevo mas tarde';
-      }
+        Helpers.showSnackBar(
+        Get.context!,
+        title: "Validar",
+        message: "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
+      );
+      
     }
   }
 }

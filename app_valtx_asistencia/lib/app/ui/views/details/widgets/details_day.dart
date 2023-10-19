@@ -1,4 +1,4 @@
-import 'package:app_valtx_asistencia/app/ui/views/marcaciones/detail_controller.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -7,12 +7,12 @@ import 'package:get/get.dart';
 
 final helpers = Helpers();
 
-class AssistanceDayUser extends StatelessWidget {
-  const AssistanceDayUser({Key? key}) : super(key: key);
+class DetailsDay extends StatelessWidget {
+  const DetailsDay({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DetailController>(
+    return GetBuilder<DetailsController>(
         builder: (controller) => Container(
               margin: const EdgeInsets.only(left: 10.0, right: 10.0),
               height: MediaQuery.of(context).size.height * 0.28,

@@ -1,4 +1,4 @@
-import 'package:app_valtx_asistencia/app/ui/views/marcaciones/detail_controller.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -12,7 +12,7 @@ class TypesValidations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DetailController>(
+    return GetBuilder<DetailsController>(
       builder: (controller) => Container(
         margin: const EdgeInsets.only(left: 10.0, right: 10.0),
         height: MediaQuery.of(context).size.height * 0.07,
@@ -23,7 +23,7 @@ class TypesValidations extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.responseTypesValidations.length,
                   separatorBuilder: (context, index) {
-                    return const SizedBox(width: 50.0);
+                    return const SizedBox(width: 45.0);
                   },
                   itemBuilder: (context, index) {
                     final item = controller.responseTypesValidations[index];

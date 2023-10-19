@@ -1,10 +1,9 @@
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_error.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/details/assistance_day_user.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/details/bottomDetail.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/details/calendar.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/widgets/details_day.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/widgets/details_month.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/widgets/calendar.dart';
 import 'package:app_valtx_asistencia/app/ui/components/date_today.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/details/types_validations.dart';
-import 'package:app_valtx_asistencia/app/ui/views/marcaciones/detail_controller.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/widgets/types_validations.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ class DetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DetailController>(
+    return GetBuilder<DetailsController>(
         builder: (controller) => Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
@@ -30,8 +29,8 @@ class DetailView extends StatelessWidget {
                   ),
                 ),
               ),
-              body: Stack(children: [
-                const Column(
+              body: const Stack(children: [
+                Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     //Calendario
@@ -41,21 +40,11 @@ class DetailView extends StatelessWidget {
                     //Fecha de hoy
                     DateToday(),
                     //Marcaciones del dia
-                    AssistanceDayUser(),
+                    DetailsDay(),
                     //faltas o tardanzas del mes
-                    BottomDetail(),
+                    DetailslMonth(),
                   ],
                 ),
-                Obx(
-                  () => AltError(
-                      textError: controller.messageError.value,
-                      isVisible: controller.isVisible.value,
-                      isLoading: false,
-                      OnTap: () {
-                        controller.messageError.value = "";
-                        controller.isVisible.value = false;
-                      }),
-                )
               ]),
             ));
   }

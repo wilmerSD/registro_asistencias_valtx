@@ -1,4 +1,3 @@
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_error.dart';
 import 'package:app_valtx_asistencia/app/ui/components/btn_primary_ink.dart';
 import 'package:app_valtx_asistencia/app/ui/views/login/login_controller.dart';
 import 'package:app_valtx_asistencia/app/ui/views/login/widgets/form_login.dart';
@@ -66,16 +65,6 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
               ),
-              /* Obx(
-                () => AltError(
-                    textError: controller.messageError.value,
-                    isVisible: controller.isVisible.value,
-                    isLoading: controller.isLoading.value,
-                    OnTap: () {
-                      controller.messageError.value = "";
-                      controller.isVisible.value = false;
-                    }),
-              ) */
             ],
           ),
         ),

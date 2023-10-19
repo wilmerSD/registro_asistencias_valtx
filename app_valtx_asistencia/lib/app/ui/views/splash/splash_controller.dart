@@ -1,6 +1,7 @@
 import 'package:app_valtx_asistencia/app/local/storage_service.dart';
 import 'package:app_valtx_asistencia/app/models/request/request_authentication_model.dart';
 import 'package:app_valtx_asistencia/app/repositories/authentication_repository.dart';
+import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/helpers/keys.dart';
 import 'package:app_valtx_asistencia/routes/app_routes_name.dart';
 import 'package:dio/dio.dart';
@@ -70,14 +71,13 @@ class SplashController extends GetxController {
         },
       );
     } catch (error) {
-      isLoading.value = false;
       isVisible.value = true;
-      if (error is DioException) {
-        messageError.value = 'ERROR: ${error.response?.data['message']}';
-      } else {
-        messageError.value =
-            'Ha ocurrido un error, por favor inténtelo de nuevo mas tarde';
-      }
+        Helpers.showSnackBar(
+        Get.context!,
+        title: "Validar",
+        message: "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
+      );
+      
     }
   }
 }

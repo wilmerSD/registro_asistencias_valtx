@@ -4,16 +4,17 @@ import 'package:app_valtx_asistencia/app/models/request/request_id_user_model.da
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_day_user_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_month_user_model.dart';
 import 'package:app_valtx_asistencia/app/repositories/asisstances_day_user_repository.dart';
+import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/helpers/keys.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_types_validations_model.dart';
 import 'package:get/get.dart';
 
-class DetailController extends GetxController {
+class DetailsController extends GetxController {
   bool isFirstTime = true;
   @override
   void onInit() {
     _typesValidationsuser();
-    _assistancesDayUser();
+    assistancesDayUser();
     _assistancesMonthUser();
 
     super.onInit();
@@ -38,6 +39,7 @@ class DetailController extends GetxController {
   var responseDataMes = <DatumMonth>[].obs;
   var statusMessageDay = ''.obs;
   var statusMessageMonth = ''.obs;
+  var date = ''.obs;
   RxString messageError = RxString("");
   RxBool isLoading = false.obs;
   RxBool isVisible = false.obs;
@@ -70,7 +72,7 @@ class DetailController extends GetxController {
   }
 
   //Asistencias del dia de usuario
-  void _assistancesDayUser() async {
+  void assistancesDayUser() async {
     isLoading.value = false;
     try {
       isLoading.value = true;
@@ -86,11 +88,14 @@ class DetailController extends GetxController {
       if (!response.success) {
         return;
       }
-    } catch (error) {
-      isLoading.value = false;
+     } catch (error) {
       isVisible.value = true;
-      messageError.value =
-          'Ha ocurrido un error, por favor inténtelo de nuevo mas tarde';
+        Helpers.showSnackBar(
+        Get.context!,
+        title: "Validar",
+        message: "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
+      );
+      
     }
   }
 }

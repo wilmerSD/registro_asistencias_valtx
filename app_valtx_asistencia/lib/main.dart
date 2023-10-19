@@ -23,21 +23,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
+  
     return ScreenUtilInit(
+      /* localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          DefaultWidgetsLocalizations.delegate,
+        ], 
+        supportedLocales: const [
+          Locale("es"),
+        ],*/
       designSize: ScreenUtil.defaultSize,
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => GetMaterialApp(
-      title: 'Registro de asistencia',
+      title: 'Registro de asistencia',  
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blueDark),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
+      
       initialRoute: AppRoutesName.SPLASH,
       getPages: AppRoutes.routes,
-    ));
+      
+    ),
+    
+    );
   }
 }
 
