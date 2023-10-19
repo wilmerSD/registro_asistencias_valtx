@@ -26,6 +26,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class HomeController extends GetxController {
   @override
   void onInit() async {
+    await cargarIconoPersonalizado();
     await _getinformationUser();
     await _getTypesMarking();
     await _typesValidationsuser();
@@ -60,7 +61,9 @@ class HomeController extends GetxController {
   final _registerMarkingUser = Get.find<RegisterMarkingUserRepository>();
   final _typesAssistances = Get.find<TypesAssistancesUserRepository>();
   final _typesValidationsRepository = Get.find<TypesValidationsRepository>();
+  
 
+  
   //Variables
   var responseUserInformation = DataUser().obs;
   var responseTypesMarking = <DatumAssistances>[].obs;
@@ -82,7 +85,31 @@ class HomeController extends GetxController {
   double latitude = 0.0;
   double longitude = 0.0;
   RxString nameLocation = "Obteniendo ubicación...".obs;
+  late BitmapDescriptor miIcono;
 
+  List<Map<String,dynamic>> iconsImages =[
+    {
+      'id': '1',
+      'position': const LatLng(-12.086660314676623, -76.99120477371234),
+      'assetPath': 'assets/mi_icono.png'
+    }
+  ];
+  final Map<String, Marker> _markers={};
+
+  Future<void> cargarIconoPersonalizado() async {
+    for (int i = 0; i < iconsImages.length; i++){
+      BitmapDescriptor markerIcon = await BitmapDescriptor.fromAssetImage(
+        const ImageConfiguration(),
+        iconsImages[i]['assetPath'],
+      );
+      _markers[i.toString()] = Marker(
+        markerId: MarkerId(i.toString()),
+        position: iconsImages[i]['position'],
+        icon: markerIcon,
+        infoWindow: InfoWindow(title: 'Valtx')
+      );
+    } 
+  }
   //Functions
   //traer información del usuario
   _getinformationUser() async {
@@ -256,4 +283,6 @@ class HomeController extends GetxController {
     await StorageService.deleteAll();
     Get.offNamed(AppRoutesName.LOGIN);
   }
+
+
 }

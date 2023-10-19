@@ -2,12 +2,13 @@ import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dar
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 DateRangePickerController _controller = DateRangePickerController();
 DateTime now = DateTime.now();
 DateTime maxDate = now;
-//DateTime minDate = DateTime(now.year, now.month, 3);
+DateTime minDate = DateTime(now.year, now.month, 1);
 final datePickerController = DateRangePickerController();
 
 class CtnCalendar extends StatelessWidget {
@@ -26,11 +27,12 @@ class CtnCalendar extends StatelessWidget {
         ),
         allowViewNavigation: false,
         maxDate: maxDate,
+        //minDate: minDate,
         todayHighlightColor: AppColors.blueDark,
         headerStyle: const DateRangePickerHeaderStyle(
             textAlign: TextAlign.center,
             textStyle: TextStyle(
-              color: Colors.white,
+              color: AppColors.backgroundColor,
             )),
         showNavigationArrow: false,
         selectionShape: DateRangePickerSelectionShape.rectangle,
@@ -39,18 +41,15 @@ class CtnCalendar extends StatelessWidget {
         monthViewSettings: const DateRangePickerMonthViewSettings(
           viewHeaderStyle: DateRangePickerViewHeaderStyle(
             textStyle: TextStyle(
-              color: Colors.grey,
+              color: AppColors.grayBlue,
             ),
           ),
         ),
         onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
-          // ejecutar función después de la selección.
           DateTime? selectedDate = args.value;
-          if (selectedDate != null) {
-            // Hacer algo con la fecha seleccionada
-            print('Fecha seleccionada: $selectedDate');
-            // Llama a tu función aquí.
-            // controller.assistancesDayUser(selectedDate);
+           String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
+          if (formattedDate != '') {
+            controller.assistancesDayUser(formattedDate);
           }
         },
       ),
