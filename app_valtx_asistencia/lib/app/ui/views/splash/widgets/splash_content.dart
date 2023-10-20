@@ -1,5 +1,6 @@
 import 'package:app_valtx_asistencia/app/ui/views/splash/splash_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
+import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,13 +13,13 @@ class SplashContent extends StatelessWidget {
         builder: (controller) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 35.0),
               decoration: const BoxDecoration(color: AppColors.light),
-              child: const Center(
-                  /*child: TextLogin(
-                      text: "VALTX",
-                      size: 46.0,
-                      colors: AppColors.blueDark,
-                      alignment: TextAlign.center),*/
-                  ),
+              child: Center(
+                  child: Text('VALTX',
+                      style: AppTextStyle(context).extra40(
+                        color: AppColors.blueDark,
+
+                      )),
+                      ),
             ));
   }
 }

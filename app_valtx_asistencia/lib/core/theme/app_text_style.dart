@@ -14,9 +14,11 @@ class AppTextStyle {
       Theme.of(context)
           .textTheme
           .titleLarge!
-          .copyWith(color: color, fontWeight: FontWeight.bold);
+          .copyWith(color: color, fontWeight: FontWeight.bold,);
+          
 
-  TextStyle bold24({double size = 24.0, Color color = Colors.white}) =>
+  TextStyle bold24(
+          {double size = 24.0, Color color = AppColors.backgroundColor}) =>
       Theme.of(context)
           .textTheme
           .titleLarge!
@@ -77,13 +79,21 @@ class AppTextStyle {
             fontSize: size,
           );
 
-  TextStyle extra20({Color? color = Colors.white}) => Theme.of(context)
-      .textTheme
-      .bodyMedium!
-      .copyWith(color: color, fontWeight: FontWeight.bold, fontSize: 20.0);
+  TextStyle extra20({Color? color = AppColors.backgroundColor}) =>
+      Theme.of(context)
+          .textTheme
+          .bodyMedium!
+          .copyWith(color: color, fontWeight: FontWeight.bold, fontSize: 20.0);
 
-  TextStyle extra16({Color? color = Colors.white}) => Theme.of(context)
-      .textTheme
-      .bodyMedium!
-      .copyWith(color: color, fontWeight: FontWeight.bold, fontSize: 16.sp);
+  TextStyle extra16({Color? color = AppColors.backgroundColor}) =>
+      Theme.of(context)
+          .textTheme
+          .bodyMedium!
+          .copyWith(color: color, fontWeight: FontWeight.bold, fontSize: 16.sp);
+
+  TextStyle extra40({Color? color = AppColors.backgroundColor,  }) =>
+      Theme.of(context)
+          .textTheme
+          .bodyMedium!
+          .copyWith(color: color, fontWeight: FontWeight.bold, fontSize: 40.sp, fontFamily: 'Montserrat',);
 }

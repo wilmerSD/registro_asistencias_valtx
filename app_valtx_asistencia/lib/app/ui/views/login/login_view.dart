@@ -1,9 +1,9 @@
 import 'package:app_valtx_asistencia/app/ui/components/btn_primary_ink.dart';
 import 'package:app_valtx_asistencia/app/ui/views/login/login_controller.dart';
 import 'package:app_valtx_asistencia/app/ui/views/login/widgets/form_login.dart';
-import 'package:app_valtx_asistencia/app/ui/views/login/widgets/text_login.dart';
 import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
+import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,12 +28,9 @@ class LoginView extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: const TextLogin(
-                  text: "Valtx",
-                  size: 40.0,
-                  colors: AppColors.backgroundColor,
-                  alignment: TextAlign.center,
-                ),
+                child: Text(
+                  'Valtx' ,style: AppTextStyle(context).extra40(
+                        color: AppColors.backgroundColor))
               ),
               Align(
                 alignment: Alignment.bottomCenter,
