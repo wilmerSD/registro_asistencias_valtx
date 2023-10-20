@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:app_valtx_asistencia/app/local/storage_service.dart';
+import 'package:app_valtx_asistencia/app/models/request/request_assistance%20_information_model.dart';
 import 'package:app_valtx_asistencia/app/models/request/request_user_information_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_month_user_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_week_user_model.dart';
@@ -20,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:location/location.dart' as locations;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -27,11 +29,11 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     await getIcons();
-    /* await cargarIconoPersonalizado(); */
     await _getinformationUser();
     await _getTypesMarking();
     await _typesValidationsuser();
-    await _getAssistancesMonthUser();
+    await detailsControllerDate();
+    await _getAssistancesMonthUser(formattedDate);
     await _getAssistancesWeekhUser();
     await _checkLocationPermission();
     await getCurrentLocation();
@@ -65,28 +67,29 @@ class HomeController extends GetxController {
 
   //Variables
   var responseUserInformation = DataUser().obs;
+  var responseUserAssistance = DataMark().obs;
   var responseTypesMarking = <DatumAssistances>[].obs;
-  var statusMessageTypesMarking = ''.obs;
-  var statusMessageUserInformation = ''.obs;
-  var statusMessageWeek = ''.obs;
-  var statusMessageMonth = ''.obs;
-  var statusAssistance = true.obs;
   var responseUserAssistanceWeek = <DatumWeek>[].obs;
   var responseUserAssistanceMonth = <DatumMonth>[].obs;
-  var responseUserAssistance = DataMark().obs;
-  var responseAssistance = ''.obs;
-  var statusMessageUserAssistance = ''.obs;
-  final Rx<LatLng> currentLocation = Rx<LatLng>(const LatLng(0, 0));
-  late BitmapDescriptor iconMap = BitmapDescriptor.defaultMarker;
-  LatLng workPosition = const LatLng(-12.086660314676623,
-      -76.99120477371234); //   ---12.086887197263105, -76.99128583985772
-  RxBool isLoading = false.obs;
+  RxString statusMessageTypesMarking = RxString("");
+  RxString statusMessageUserInformation = RxString("");
+  RxString statusMessageWeek =  RxString("");
+  RxString statusMessageMonth = RxString("");
+  RxString statusMessageUserAssistance =  RxString("");
   RxString messageError = RxString("");
+  RxString nameLocation = "Obteniendo ubicación...".obs;
+  LatLng workPosition = const LatLng(-12.086660314676623, -76.99120477371234);
+  RxBool statusAssistance = true.obs;
+  RxBool isLoading = false.obs;
   RxBool isVisible = false.obs;
   RxBool isLoadingUser = false.obs;
   double latitude = 0.0;
   double longitude = 0.0;
-  RxString nameLocation = "Obteniendo ubicación...".obs;
+  DateTime? selectedDate;
+  String? formattedDate;
+  final Rx<LatLng> currentLocation = Rx<LatLng>(const LatLng(0, 0));
+  late BitmapDescriptor iconMap = BitmapDescriptor.defaultMarker;
+
   //Functions
   //traer información del usuario
   _getinformationUser() async {
@@ -101,7 +104,6 @@ class HomeController extends GetxController {
     responseUserInformation.value = response.data;
     statusMessageUserInformation.value = response.statusMessage;
     if (!response.success) {
-      print("error: ${response.statusMessage}");
       return;
     }
     final idUser = response.data.idUser;
@@ -116,7 +118,6 @@ class HomeController extends GetxController {
     responseTypesMarking.assignAll(response.data);
     statusMessageTypesMarking.value = response.statusMessage;
     if (!response.success) {
-      print("error: ${response.statusMessage}");
       return;
     }
   }
@@ -127,7 +128,6 @@ class HomeController extends GetxController {
     final response = await _typesValidationsRepository.getTypesValidations();
     isLoading.value = false;
     if (!response.success) {
-      print("error: ${response.statusMessage}");
       return;
     }
     await StorageService.set(
@@ -135,28 +135,18 @@ class HomeController extends GetxController {
   }
 
   //Asistencia del mes
-  _getAssistancesMonthUser() async {
+  _getAssistancesMonthUser(formattedDate) async {
     isLoading.value = true;
     String Iduser = await StorageService.get(Keys.kIdUser);
-    final response = await _assistancesMonthkUserRepository.getAssistancesMonth(
-      RequestIdUserModel(
-        idUser: int.parse(Iduser),
-      ),
+    final response =
+        await _assistancesMonthkUserRepository.getAssistancesMonthDate(
+      RequestAssistanceInformationModel(
+          idUser: int.parse(Iduser), date: formattedDate),
     );
     isLoading.value = false;
-    await StorageService.set(
-        key: Keys.kAssistancesMonthUser, value: json.encode(response.toJson()));
-    final storedAssistancesMonthUser =
-        await StorageService.get(Keys.kAssistancesMonthUser);
-    final decodedAssistancesMonthUser = json.decode(storedAssistancesMonthUser);
-    final decodedAssistancesMonthUserList =
-        (decodedAssistancesMonthUser['data'] as List)
-            .map((item) => DatumMonth.fromJson(item))
-            .toList();
-    responseUserAssistanceMonth.assignAll(decodedAssistancesMonthUserList);
-    statusMessageMonth.value = decodedAssistancesMonthUser['status_message'];
+    responseUserAssistanceMonth.assignAll(response.data ?? []);
+    statusMessageMonth.value = response.statusMessage;
     if (!response.success) {
-      print("error: ${response.statusMessage}");
       return;
     }
   }
@@ -176,7 +166,6 @@ class HomeController extends GetxController {
       responseUserAssistanceWeek.assignAll(response.data ?? []);
       statusMessageWeek.value = response.statusMessage;
       if (!response.success) {
-        print("error: ${response.statusMessage}");
         return;
       }
     } catch (error) {
@@ -204,10 +193,9 @@ class HomeController extends GetxController {
       statusMessageUserAssistance.value = response.statusMessage;
       responseUserAssistance.value = response.data;
       if (!response.success) {
-        print("error: ${response.statusMessage}");
         return;
       }
-      _getAssistancesMonthUser();
+      _getAssistancesMonthUser(formattedDate);
       _getAssistancesWeekhUser();
     } catch (error) {
       isLoading.value = false;
@@ -217,6 +205,7 @@ class HomeController extends GetxController {
     }
   }
 
+  //Chequear los permisos de ubicación
   Future<void> _checkLocationPermission() async {
     final hasPermission = await location.hasPermission();
     if (hasPermission == locations.PermissionStatus.denied) {
@@ -230,6 +219,7 @@ class HomeController extends GetxController {
     getCurrentLocation();
   }
 
+  //Optener ubicación actual
   Future<void> getCurrentLocation() async {
     final position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
@@ -241,10 +231,7 @@ class HomeController extends GetxController {
     update();
   }
 
-  void navigateToScreen() {
-    Get.toNamed(AppRoutesName.DETAIL);
-  }
-
+  //Optener nombre de ubicación actual
   getNameLocation() async {
     List<Placemark> placemarks =
         await placemarkFromCoordinates(latitude, longitude);
@@ -257,6 +244,7 @@ class HomeController extends GetxController {
     }
   }
 
+  //loginout
   loginout() async {
     await StorageService.deleteAll();
     Get.offNamed(AppRoutesName.LOGIN);
@@ -265,7 +253,19 @@ class HomeController extends GetxController {
   // cargar icono para el mapa
   getIcons() async {
     iconMap = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5), "assets/markerValtx.png");
+        const ImageConfiguration(devicePixelRatio: 2.5),
+        "assets/markerValtx.png");
     update();
+  }
+
+  //Ir a detalles
+  navigateToScreen() {
+    Get.toNamed(AppRoutesName.DETAIL);
+  }
+
+  // Guardando fecha en formato correcto
+  detailsControllerDate() {
+    selectedDate = DateTime.now();
+    formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
   }
 }

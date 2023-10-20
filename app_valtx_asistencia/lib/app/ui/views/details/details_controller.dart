@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:app_valtx_asistencia/app/local/storage_service.dart';
-import 'package:app_valtx_asistencia/app/models/request/request_day_information_model.dart';
+import 'package:app_valtx_asistencia/app/models/request/request_assistance%20_information_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_day_user_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_month_user_model.dart';
+import 'package:app_valtx_asistencia/app/providers/assistances_month_user_provider.dart';
 import 'package:app_valtx_asistencia/app/repositories/asisstances_day_user_repository.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/helpers/keys.dart';
@@ -17,7 +18,7 @@ class DetailsController extends GetxController {
     await detailsControllerDate();
     _typesValidationsuser();
     assistancesDayUser(formattedDate);
-    _assistancesMonthUser();
+    getAssistancesMonthUser(formattedDate);
 
     super.onInit();
   }
@@ -34,6 +35,7 @@ class DetailsController extends GetxController {
 
   //Instances
   final _assistancesDayUserRepository = Get.find<AssistanceDayUserRepository>();
+  final _assistancesMonthkUserRepository = Get.find<AssistanceMonthUserProvider>();
 
   //variables
   var responseTypesValidations = <Datum>[].obs;
@@ -44,6 +46,7 @@ class DetailsController extends GetxController {
   var date = ''.obs;
   RxString messageError = RxString("");
   RxBool isLoading = false.obs;
+  RxBool isLoadingTypesValidation = false.obs;
   RxBool isVisible = false.obs;
   DateTime? selectedDate;
   String? formattedDate;
@@ -51,7 +54,7 @@ class DetailsController extends GetxController {
   //Funciones
   //Tipos de validacion
   void _typesValidationsuser() async {
-    isLoading.value = true;
+    isLoadingTypesValidation.value = true;
     final storedTypesValidation =
         await StorageService.get(Keys.kTypesValidation);
     final decodedTypesValidation = json.decode(storedTypesValidation);
@@ -59,20 +62,26 @@ class DetailsController extends GetxController {
         .map((item) => Datum.fromJson(item))
         .toList();
     responseTypesValidations.assignAll(typesValidationList);
+    isLoadingTypesValidation.value = false;
   }
 
   //Asistencias del mes de usuario
-  void _assistancesMonthUser() async {
+  void getAssistancesMonthUser(formattedDate) async {
     isLoading.value = true;
-    final storedAssistancesMonthUser =
-        await StorageService.get(Keys.kAssistancesMonthUser);
-    final decodedAssistancesMonthUser = json.decode(storedAssistancesMonthUser);
-    final decodedAssistancesMonthUserList =
-        (decodedAssistancesMonthUser['data'] as List)
-            .map((item) => DatumMonth.fromJson(item))
-            .toList();
-    responseDataMes.assignAll(decodedAssistancesMonthUserList);
-    statusMessageMonth.value = decodedAssistancesMonthUser['status_message'];
+    String Iduser = await StorageService.get(Keys.kIdUser);
+    final response = await _assistancesMonthkUserRepository.getAssistancesMonthDate(
+      RequestAssistanceInformationModel(
+        idUser: int.parse(Iduser),
+        date: formattedDate
+      ),
+    );
+    isLoading.value = false;
+    responseDataMes.assignAll(response.data??[]);
+    statusMessageMonth.value =response.statusMessage;
+    if (!response.success) {
+      print("error: ${response.statusMessage}");
+      return;
+    }
   }
 
   //Formatear la hora
@@ -88,7 +97,7 @@ class DetailsController extends GetxController {
       isLoading.value = true;
       String Iduser = await StorageService.get(Keys.kIdUser);
       final response = await _assistancesDayUserRepository.getAssistancesDay(
-        RequestDayInformationModel(
+        RequestAssistanceInformationModel(
           idUser: int.parse(Iduser),
           date: formattedDate,
         ),

@@ -28,7 +28,7 @@ class CtnCalendar extends StatelessWidget {
         allowViewNavigation: false,
         maxDate: maxDate,
         //minDate: minDate,
-        todayHighlightColor: AppColors.blueDark,
+        todayHighlightColor: AppColors.primary,
         headerStyle: const DateRangePickerHeaderStyle(
             textAlign: TextAlign.center,
             textStyle: TextStyle(
@@ -36,7 +36,7 @@ class CtnCalendar extends StatelessWidget {
             )),
         showNavigationArrow: false,
         selectionShape: DateRangePickerSelectionShape.rectangle,
-        selectionColor: AppColors.blueDark,
+        selectionColor: AppColors.primary,
         view: DateRangePickerView.month,
         monthViewSettings: const DateRangePickerMonthViewSettings(
           viewHeaderStyle: DateRangePickerViewHeaderStyle(
@@ -49,7 +49,8 @@ class CtnCalendar extends StatelessWidget {
           DateTime? selectedDate = args.value;
            String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
           if (formattedDate != '') {
-            controller.assistancesDayUser(formattedDate);
+            controller.getAssistancesMonthUser(formattedDate);
+            controller.assistancesDayUser(formattedDate);  
           }
         },
       ),
