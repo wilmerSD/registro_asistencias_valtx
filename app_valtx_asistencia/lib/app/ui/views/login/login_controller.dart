@@ -39,8 +39,8 @@ class LoginController extends GetxController {
 
   //Functions
   void _initialize() async {
-    ctrlEmailText.text = "wilmer@gmail.com";
-    ctrlPasswordText.text = "123456";
+    ctrlEmailText.text = "";
+    ctrlPasswordText.text = "";
   }
 
   void setPrivate() {
@@ -75,29 +75,31 @@ class LoginController extends GetxController {
       if (!response.success) {
         isVisible.value = true;
         Helpers.showSnackBar(
-        Get.context!,
-        title: "Validar",
-        message: "Ups! Ocurrió un error, ${response.statusMessage}",
-      );
+          Get.context!,
+          title: "Validar",
+          message: "Ups! Ocurrió un error, ${response.statusMessage}",
+        );
         return;
       }
 
       //Guardar la información en sesión
       await StorageService.set(
           key: Keys.kTokenSesion, value: response.data!.token);
-      await StorageService.set(key: Keys.kUserName, value: ctrlEmailText.text.trim());
-      await StorageService.set(key: Keys.kPassword, value: ctrlPasswordText.text.trim());
+      await StorageService.set(
+          key: Keys.kUserName, value: ctrlEmailText.text.trim());
+      await StorageService.set(
+          key: Keys.kPassword, value: ctrlPasswordText.text.trim());
 
       //Ir a nueva ruta y eliminar de memoria controllers existentes
       Get.offNamed(AppRoutesName.HOME);
     } catch (error) {
       isVisible.value = true;
-        Helpers.showSnackBar(
+      Helpers.showSnackBar(
         Get.context!,
         title: "Validar",
-        message: "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
+        message:
+            "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
       );
-      
     }
   }
 }

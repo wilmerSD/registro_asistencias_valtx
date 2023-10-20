@@ -31,6 +31,12 @@ class AltMarcarOk extends StatelessWidget {
                         style: AppTextStyle(context).bold16(
                           color: AppColors.primary,
                         )),
+                    if (registradoComo == 'Falta')
+                      Text('Por favor comunicarse con Líder Técnico',
+                          style: AppTextStyle(context).medium14(
+                            color: AppColors.primary,
+                          ),
+                          textAlign: TextAlign.center),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -38,14 +44,10 @@ class AltMarcarOk extends StatelessWidget {
                           Icons.location_on_sharp,
                           color: AppColors.degradedInitial,
                         ),
-                        Text(
-                          ubicacion ?? '-------',
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                            color: AppColors.blueDark,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
+                        Text(ubicacion ?? '-------',
+                            style: AppTextStyle(context).medium14(
+                              color: AppColors.primary,
+                            )),
                       ],
                     )
                   ],
