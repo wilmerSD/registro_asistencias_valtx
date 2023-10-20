@@ -19,8 +19,8 @@ class UserInformation extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(10.0),
-                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(kRadiusMedium),
+                topLeft: Radius.circular(kRadiusMedium),
               ),
               color: AppColors.backgroundColor,
               boxShadow: [

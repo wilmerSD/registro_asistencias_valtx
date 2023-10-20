@@ -78,6 +78,8 @@ class HomeController extends GetxController {
   var statusMessageUserAssistance = ''.obs;
   final Rx<LatLng> currentLocation = Rx<LatLng>(const LatLng(0, 0));
   late BitmapDescriptor iconMap = BitmapDescriptor.defaultMarker;
+  LatLng workPosition = const LatLng(-12.086660314676623,
+      -76.99120477371234); //   ---12.086887197263105, -76.99128583985772
   RxBool isLoading = false.obs;
   RxString messageError = RxString("");
   RxBool isVisible = false.obs;
@@ -232,12 +234,8 @@ class HomeController extends GetxController {
     final position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    currentLocation.value = LatLng(
-        position.latitude,
-        position
-            .longitude /* -12.086660314676623,
-        -76.99120477371234 */
-        );
+    currentLocation.value = LatLng(position.latitude,
+        position.longitude); // -12.086660314676623,-76.99120477371234
     latitude = position.latitude;
     longitude = position.longitude;
     update();

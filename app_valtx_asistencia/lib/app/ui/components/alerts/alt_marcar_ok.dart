@@ -44,8 +44,8 @@ class AltMarcarOk extends StatelessWidget {
                           Icons.location_on_sharp,
                           color: AppColors.degradedInitial,
                         ),
-                        Text(ubicacion ?? '-------',
-                            style: AppTextStyle(context).medium14(
+                        Text(controller.nameLocation.value,
+                            style: AppTextStyle(context).bold16(
                               color: AppColors.primary,
                             )),
                       ],

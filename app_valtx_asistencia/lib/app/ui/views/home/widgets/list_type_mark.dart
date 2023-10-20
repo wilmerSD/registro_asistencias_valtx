@@ -40,21 +40,23 @@ class ListTypeMark extends StatelessWidget {
                   )
                 : Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: controller.responseTypesMarking.map((type) {
-                      return ListTile(
-                        title: Text(
-                          type.description,
-                          style: AppTextStyle(context).medium14(
-                            color: AppColors.grayBlue,
+                    children: controller.responseTypesMarking.map(
+                      (type) {
+                        return ListTile(
+                          title: Text(
+                            type.description,
+                            style: AppTextStyle(context).medium14(
+                              color: AppColors.grayBlue,
+                            ),
                           ),
-                        ),
-                        onTap: () {
-                          Navigator.pop(context, type.idTypesMarking);
-                          showSecondDialog(
-                              context, controller, type.idTypesMarking);
-                        },
-                      );
-                    }).toList(),
+                          onTap: () {
+                            Navigator.pop(context, type.idTypesMarking);
+                            showSecondDialog(
+                                context, controller, type.idTypesMarking);
+                          },
+                        );
+                      },
+                    ).toList(),
                   ),
       ),
     );

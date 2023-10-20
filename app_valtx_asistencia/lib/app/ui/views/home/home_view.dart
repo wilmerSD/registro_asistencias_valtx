@@ -1,6 +1,6 @@
 import 'package:app_valtx_asistencia/app/ui/components/btn_primary_ink.dart';
 import 'package:app_valtx_asistencia/app/ui/components/dashed_line.dart';
-import 'package:app_valtx_asistencia/app/ui/components/views/home/map_view.dart';
+import 'package:app_valtx_asistencia/app/ui/views/home/widgets/map_view.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/widgets/content_week_home.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/widgets/appBar_home.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/widgets/bottom_home.dart';

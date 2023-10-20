@@ -21,8 +21,8 @@ class BottomHome extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+                  bottomLeft: Radius.circular(kRadiusMedium),
+                  bottomRight: Radius.circular(kRadiusMedium),
                 ),
                 color: AppColors.backgroundColor,
                 boxShadow: [
@@ -51,8 +51,8 @@ class BottomHome extends StatelessWidget {
                                         )),
                                   )
                                 : ListView.separated(
-                                    padding: const EdgeInsets.only(
-                                        left: 15.0, right: 15),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
                                     scrollDirection: Axis.horizontal,
                                     itemCount: controller
                                         .responseUserAssistanceMonth.length,
@@ -70,11 +70,9 @@ class BottomHome extends StatelessWidget {
                                         children: [
                                           Text(
                                             '${itemMonth.quantity}',
-                                            style: const TextStyle(
-                                              color: AppColors.blueDark,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                            ),
+                                            style: AppTextStyle(context)
+                                                .extra20(
+                                                    color: AppColors.blueDark),
                                           ),
                                           Text(
                                             itemMonth.description!,

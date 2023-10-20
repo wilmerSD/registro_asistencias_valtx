@@ -68,8 +68,8 @@ class ContentWeekHome extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.07,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+                  bottomLeft: Radius.circular(kRadiusMedium),
+                  bottomRight: Radius.circular(kRadiusMedium),
                 ),
                 color: Colors.white,
               ),

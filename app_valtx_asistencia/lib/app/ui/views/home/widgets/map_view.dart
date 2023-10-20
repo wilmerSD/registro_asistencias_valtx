@@ -45,15 +45,15 @@ class MapView extends StatelessWidget {
               ),
               Marker(
                 markerId: const MarkerId("lugarEspecifico"),
-                position: const LatLng(-12.086887197263105, -76.99128583985772),
+                position: controller.workPosition,
                 infoWindow: const InfoWindow(title: "Trabajo"),
                 icon: controller.iconMap,
               ),
             },
             circles: {
-              const Circle(
+              Circle(
                 circleId: CircleId("circuloLugarEspecifico"),
-                center: LatLng(-12.086660314676623, -76.99120477371234),
+                center: controller.workPosition,
                 radius: 100,
                 fillColor: AppColors.radiusMap,
                 strokeColor: AppColors.blueDark,

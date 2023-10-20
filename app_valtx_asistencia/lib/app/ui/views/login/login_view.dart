@@ -38,14 +38,15 @@ class LoginView extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: kMarginLargeApp),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kMarginLargeApp),
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.50,
                   decoration: const BoxDecoration(
                     color: AppColors.backgroundColor,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(kRadiusNormal),
+                      topRight: Radius.circular(kRadiusNormal),
                     ),
                   ),
                   child: Column(

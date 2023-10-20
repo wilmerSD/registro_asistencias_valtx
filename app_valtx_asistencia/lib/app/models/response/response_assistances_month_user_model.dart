@@ -48,14 +48,14 @@ class DatumMonth {
   });
 
   factory DatumMonth.fromJson(Map<String, dynamic> json) => DatumMonth(
-        idUser: json["idUser"],
+       
         idValidation: json["idValidation"],
         description: json["description"],
         quantity: json["quantity"],
       );
 
   Map<String, dynamic> toJson() => {
-        "idUser": idUser,
+        
         "idValidation": idValidation,
         "description": description,
         "quantity": quantity,
