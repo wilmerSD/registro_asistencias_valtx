@@ -56,9 +56,9 @@ class DetailsDay extends StatelessWidget {
                                             const SizedBox(width: 15.0),
                                             Text(
                                               itemDay.time ?? '',
-                                              style: AppTextStyle(context)
-                                                  .medium14(
-                                                color: AppColors.grayBlue,
+                                              style:
+                                                  AppTextStyle(context).extra14(
+                                                color: AppColors.grey,
                                               ),
                                             ),
                                           ],
@@ -75,11 +75,11 @@ class DetailsDay extends StatelessWidget {
                                                 color: AppColors.primary,
                                               ),
                                             ),
-                                            const Text(
+                                            Text(
                                               'Sin observaciones',
-                                              style: TextStyle(
-                                                color: AppColors.grayBlue,
-                                                fontSize: 14,
+                                              style: AppTextStyle(context)
+                                                  .medium14(
+                                                color: AppColors.grey,
                                               ),
                                             ),
                                           ],

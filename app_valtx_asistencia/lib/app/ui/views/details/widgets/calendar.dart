@@ -19,7 +19,7 @@ class Calendar extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.4,
               height: MediaQuery.of(context).size.height * 0.04,
               decoration: BoxDecoration(
-                color: AppColors.blueDark,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.circular(5.0),
               ),
             ),

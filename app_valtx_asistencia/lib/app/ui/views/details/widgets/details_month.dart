@@ -57,14 +57,14 @@ class DetailslMonth extends StatelessWidget {
                                       Text(
                                         '${itemMonth.quantity}',
                                         style: const TextStyle(
-                                          color: AppColors.blueDark,
+                                          color: AppColors.primary,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
                                         ),
                                       ),
                                       Text(
                                         itemMonth.description!,
-                                        style: AppTextStyle(context).medium14(
+                                        style: AppTextStyle(context).medium12(
                                           color: AppColors.grayBlue,
                                         ),
                                       ),

@@ -8,6 +8,7 @@ class AppColors {
   static const Color grayLight = Color.fromRGBO(230, 230, 241, 1);
   static const Color grayBlue = Color.fromRGBO(125, 126, 138, 1);
   static const Color radiusMap = Color.fromRGBO(38, 52, 113, 0.219);
+  static const Color grey = Color.fromRGBO(71, 71, 73, 1);
   //----------------------------------------------------------------
   static const Color validationTimely = Color.fromRGBO(0, 196, 140, 1);
   static const Color validationMissing = Color.fromRGBO(231, 44, 49, 1);
@@ -30,7 +31,6 @@ class AppColors {
   static const Color light = Color.fromRGBO(239, 239, 239, 1.0);
   static const Color green = Color.fromRGBO(76, 175, 80, 1);
   static const Color yellow = Color.fromRGBO(255, 235, 59, 1);
-  static const Color grey = Color.fromRGBO(158, 158, 158, 1);
   //-----------
   static const Color purpleCustom = Color.fromRGBO(53, 43, 200, 1);
   static const Color blueCustom = Color.fromRGBO(47, 119, 234, 1);

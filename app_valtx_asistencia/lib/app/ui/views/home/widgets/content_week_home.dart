@@ -80,7 +80,7 @@ class ContentWeekHome extends StatelessWidget {
                       : controller.responseUserAssistanceWeek.isEmpty
                           ? Center(
                               child: Text('${controller.statusMessageWeek}',
-                                  style: AppTextStyle(context).medium14(
+                                  style: AppTextStyle(context).medium12(
                                     color: AppColors.grayBlue,
                                   )),
                             )

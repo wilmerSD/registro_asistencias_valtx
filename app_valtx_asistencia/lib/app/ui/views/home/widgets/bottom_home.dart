@@ -70,14 +70,13 @@ class BottomHome extends StatelessWidget {
                                         children: [
                                           Text(
                                             '${itemMonth.quantity}',
-                                            style: AppTextStyle(context)
-                                                .extra20(
-                                                    color: AppColors.blueDark),
+                                            style: AppTextStyle(context).bold14(
+                                                color: AppColors.primary),
                                           ),
                                           Text(
                                             itemMonth.description!,
                                             style: AppTextStyle(context)
-                                                .normal12(
+                                                .medium12(
                                                     color: AppColors.grayBlue),
                                           ),
                                         ],

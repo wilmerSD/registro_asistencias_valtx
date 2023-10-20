@@ -37,7 +37,7 @@ class UserInformation extends StatelessWidget {
                   ? const Center(child: CircularProgressIndicator())
                   : ListTile(
                       leading: const CircleAvatar(
-                        backgroundColor: AppColors.blueDark,
+                        backgroundColor: AppColors.primary,
                         radius: 22,
                         child: Icon(Icons.person,
                             color: AppColors.backgroundColor, size: 30),
@@ -61,7 +61,7 @@ class UserInformation extends StatelessWidget {
                               controller.nameLocation.value,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyle(context)
-                                  .normal12(color: AppColors.grayBlue),
+                                  .medium12(color: AppColors.grayBlue),
                             ),
                           ),
                         ],

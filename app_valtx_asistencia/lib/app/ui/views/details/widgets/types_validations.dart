@@ -17,7 +17,7 @@ class TypesValidations extends StatelessWidget {
         margin: const EdgeInsets.only(left: 10.0, right: 10.0),
         height: MediaQuery.of(context).size.height * 0.07,
         child: Obx(
-          () => controller.isLoading.value
+          () => controller.isLoadingTypesValidation.value
               ? const Center(child: CircularProgressIndicator())
               : ListView.separated(
                   scrollDirection: Axis.horizontal,
@@ -43,7 +43,7 @@ class TypesValidations extends StatelessWidget {
                         const SizedBox(height: 10.0),
                         Text(
                           item.description,
-                          style: AppTextStyle(context).medium14(
+                          style: AppTextStyle(context).medium12(
                             color: AppColors.grayBlue,
                           ),
                         ),

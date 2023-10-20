@@ -31,7 +31,7 @@ class BtnPrimaryInk extends StatelessWidget {
         boxShadow: showBoxShadow
             ? [
                 BoxShadow(
-                  color:  AppColors.red.withOpacity(0.25),
+                  color: AppColors.red.withOpacity(0.25),
                   spreadRadius: 5,
                   blurRadius: 20,
                   offset: const Offset(0, 4),
@@ -49,7 +49,8 @@ class BtnPrimaryInk extends StatelessWidget {
               children: [
                 Text(
                   text,
-                  style: AppTextStyle(context).extra16(),
+                  style: AppTextStyle(context)
+                      .bold18(color: AppColors.backgroundColor),
                 ),
                 loading
                     ? const Row(

@@ -83,7 +83,7 @@ class AppBarHome extends StatelessWidget {
                       Text(
                         helpers.getDateLarge(),
                         style: AppTextStyle(context)
-                            .medium14(color: AppColors.grayBlue),
+                            .medium12(color: AppColors.grayBlue),
                       ),
                     ],
                   ),

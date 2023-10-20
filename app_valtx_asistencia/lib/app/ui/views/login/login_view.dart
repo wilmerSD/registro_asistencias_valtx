@@ -20,18 +20,18 @@ class LoginView extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/reunion.png"),
-                    fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/reunion.png"),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                child: Text(
-                  'Valtx' ,style: AppTextStyle(context).extra40(
-                        color: AppColors.backgroundColor))
-              ),
+                  child: Text('Valtx',
+                      style: AppTextStyle(context)
+                          .extra40(color: AppColors.backgroundColor),
+                      textAlign: TextAlign.center)),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(

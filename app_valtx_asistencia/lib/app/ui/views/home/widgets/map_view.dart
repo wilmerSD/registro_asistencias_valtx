@@ -56,7 +56,7 @@ class MapView extends StatelessWidget {
                 center: controller.workPosition,
                 radius: 100,
                 fillColor: AppColors.radiusMap,
-                strokeColor: AppColors.blueDark,
+                strokeColor: AppColors.primary,
                 strokeWidth: 2,
               ),
             },

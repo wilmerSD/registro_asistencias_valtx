@@ -21,7 +21,7 @@ class DateToday extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Text(
           formattedDate,
-          style: AppTextStyle(context).bold16(
+          style: AppTextStyle(context).bold18(
             color: AppColors.primary,
           ),
         ),

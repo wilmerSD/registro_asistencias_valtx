@@ -24,7 +24,7 @@ class DetailView extends StatelessWidget {
                 backgroundColor: AppColors.backgroundColor,
                 title: Text(
                   'Mis marcaciones',
-                  style: AppTextStyle(context).bold18(
+                  style: AppTextStyle(context).extra20(
                     color: AppColors.primary,
                   ),
                 ),

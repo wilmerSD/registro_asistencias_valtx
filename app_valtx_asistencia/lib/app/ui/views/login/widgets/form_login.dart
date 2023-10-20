@@ -17,14 +17,14 @@ class FormLogin extends GetView<LoginController> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-         SizedBox(height: 30.h),
+        SizedBox(height: 30.h),
         Text(
           "Sistema de asistencia",
           style: AppTextStyle(context).bold24(color: AppColors.primary),
         ),
         SizedBox(height: 25.h),
         FieldForm(
-          label: "Correo electrónico",
+          label: "Usuario",
           hintText: "",
           textInputType: TextInputType.emailAddress,
           textEditingController: controller.ctrlEmailText,
@@ -49,7 +49,6 @@ class FormLogin extends GetView<LoginController> {
             },
           ),
         ),
-
       ],
     );
   }
