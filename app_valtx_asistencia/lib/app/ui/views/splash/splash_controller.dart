@@ -43,7 +43,7 @@ class SplashController extends GetxController {
       final userName = await StorageService.get(Keys.kUserName);
       final password = await StorageService.get(Keys.kPassword);
 
-      if (userName.isNotEmpty && password.isNotEmpty) {
+      if (userName.isEmpty && password.isEmpty) {
         Get.offNamed(AppRoutesName.LOGIN);
         return;
       }
@@ -72,12 +72,12 @@ class SplashController extends GetxController {
       );
     } catch (error) {
       isVisible.value = true;
-        Helpers.showSnackBar(
+      Helpers.showSnackBar(
         Get.context!,
         title: "Validar",
-        message: "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
+        message:
+            "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
       );
-      
     }
   }
 }

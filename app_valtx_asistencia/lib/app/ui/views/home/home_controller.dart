@@ -26,7 +26,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class HomeController extends GetxController {
   @override
   void onInit() async {
-    await cargarIconoPersonalizado();
+    await getIcons();
+    /* await cargarIconoPersonalizado(); */
     await _getinformationUser();
     await _getTypesMarking();
     await _typesValidationsuser();
@@ -61,9 +62,7 @@ class HomeController extends GetxController {
   final _registerMarkingUser = Get.find<RegisterMarkingUserRepository>();
   final _typesAssistances = Get.find<TypesAssistancesUserRepository>();
   final _typesValidationsRepository = Get.find<TypesValidationsRepository>();
-  
 
-  
   //Variables
   var responseUserInformation = DataUser().obs;
   var responseTypesMarking = <DatumAssistances>[].obs;
@@ -78,6 +77,7 @@ class HomeController extends GetxController {
   var responseAssistance = ''.obs;
   var statusMessageUserAssistance = ''.obs;
   final Rx<LatLng> currentLocation = Rx<LatLng>(const LatLng(0, 0));
+  late BitmapDescriptor iconMap = BitmapDescriptor.defaultMarker;
   RxBool isLoading = false.obs;
   RxString messageError = RxString("");
   RxBool isVisible = false.obs;
@@ -85,31 +85,6 @@ class HomeController extends GetxController {
   double latitude = 0.0;
   double longitude = 0.0;
   RxString nameLocation = "Obteniendo ubicación...".obs;
-  late BitmapDescriptor miIcono;
-
-  List<Map<String,dynamic>> iconsImages =[
-    {
-      'id': '1',
-      'position': const LatLng(-12.086660314676623, -76.99120477371234),
-      'assetPath': 'assets/mi_icono.png'
-    }
-  ];
-  final Map<String, Marker> _markers={};
-
-  Future<void> cargarIconoPersonalizado() async {
-    for (int i = 0; i < iconsImages.length; i++){
-      BitmapDescriptor markerIcon = await BitmapDescriptor.fromAssetImage(
-        const ImageConfiguration(),
-        iconsImages[i]['assetPath'],
-      );
-      _markers[i.toString()] = Marker(
-        markerId: MarkerId(i.toString()),
-        position: iconsImages[i]['position'],
-        icon: markerIcon,
-        infoWindow: InfoWindow(title: 'Valtx')
-      );
-    } 
-  }
   //Functions
   //traer información del usuario
   _getinformationUser() async {
@@ -257,7 +232,12 @@ class HomeController extends GetxController {
     final position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    currentLocation.value = LatLng(position.latitude, position.longitude);
+    currentLocation.value = LatLng(
+        position.latitude,
+        position
+            .longitude /* -12.086660314676623,
+        -76.99120477371234 */
+        );
     latitude = position.latitude;
     longitude = position.longitude;
     update();
@@ -284,5 +264,10 @@ class HomeController extends GetxController {
     Get.offNamed(AppRoutesName.LOGIN);
   }
 
-
+  // cargar icono para el mapa
+  getIcons() async {
+    iconMap = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 2.5), "assets/markerValtx.png");
+    update();
+  }
 }
