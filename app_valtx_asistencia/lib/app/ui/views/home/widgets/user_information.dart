@@ -14,7 +14,7 @@ class UserInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
         builder: (controller) => Container(
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: /* MediaQuery.of(context).size.height * 0.1.h, */ 78.h,
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
             decoration: BoxDecoration(
@@ -36,13 +36,14 @@ class UserInformation extends StatelessWidget {
               return controller.isLoadingUser.value
                   ? const Center(child: CircularProgressIndicator())
                   : ListTile(
-                      leading: const CircleAvatar(
+                      leading: CircleAvatar(
                         backgroundColor: AppColors.primary,
-                        radius: 22,
+                        radius: 50.h,
                         child: Icon(Icons.person,
                             color: AppColors.backgroundColor, size: 30),
                       ),
                       title: Text(
+                        textScaleFactor: 1,
                         "${controller.responseUserInformation.value.names} ${controller.responseUserInformation.value.lastNames}",
                         style: AppTextStyle(context).bold14(
                           color: AppColors.primary,
@@ -58,6 +59,7 @@ class UserInformation extends StatelessWidget {
                           SizedBox(width: 5.w),
                           Flexible(
                             child: Text(
+                              textScaleFactor: 1,
                               controller.nameLocation.value,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyle(context)

@@ -3,8 +3,8 @@ import 'package:app_valtx_asistencia/app/local/storage_service.dart';
 import 'package:app_valtx_asistencia/app/models/request/request_assistance%20_information_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_day_user_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_assistances_month_user_model.dart';
-import 'package:app_valtx_asistencia/app/providers/assistances_month_user_provider.dart';
-import 'package:app_valtx_asistencia/app/repositories/asisstances_day_user_repository.dart';
+import 'package:app_valtx_asistencia/app/providers/assistances_user_provider.dart';
+import 'package:app_valtx_asistencia/app/repositories/assistances_user_repository.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/helpers/keys.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_types_validations_model.dart';
@@ -12,9 +12,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class DetailsController extends GetxController {
-  
   @override
-  void onInit()async {
+  void onInit() async {
     await detailsControllerDate();
     _typesValidationsuser();
     assistancesDayUser(formattedDate);
@@ -35,7 +34,8 @@ class DetailsController extends GetxController {
 
   //Instances
   final _assistancesDayUserRepository = Get.find<AssistanceDayUserRepository>();
-  final _assistancesMonthkUserRepository = Get.find<AssistanceMonthUserProvider>();
+  final _assistancesMonthkUserRepository =
+      Get.find<AssistanceMonthUserProvider>();
 
   //variables
   var responseTypesValidations = <Datum>[].obs;
@@ -69,15 +69,14 @@ class DetailsController extends GetxController {
   void getAssistancesMonthUser(formattedDate) async {
     isLoading.value = true;
     String Iduser = await StorageService.get(Keys.kIdUser);
-    final response = await _assistancesMonthkUserRepository.getAssistancesMonthDate(
+    final response =
+        await _assistancesMonthkUserRepository.getAssistancesMonthDate(
       RequestAssistanceInformationModel(
-        idUser: int.parse(Iduser),
-        date: formattedDate
-      ),
+          idUser: int.parse(Iduser), date: formattedDate),
     );
     isLoading.value = false;
-    responseDataMes.assignAll(response.data??[]);
-    statusMessageMonth.value =response.statusMessage;
+    responseDataMes.assignAll(response.data ?? []);
+    statusMessageMonth.value = response.statusMessage;
     if (!response.success) {
       print("error: ${response.statusMessage}");
       return;
@@ -102,22 +101,21 @@ class DetailsController extends GetxController {
           date: formattedDate,
         ),
       );
-      
+
       isLoading.value = false;
       responseDataDia.assignAll(response.data ?? []);
       statusMessageDay.value = response.statusMessage;
       if (!response.success) {
-        
         return;
       }
-     } catch (error) {
+    } catch (error) {
       isVisible.value = true;
-        Helpers.showSnackBar(
+      Helpers.showSnackBar(
         Get.context!,
         title: "Validar",
-        message: "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
+        message:
+            "Ups! Ocurrió un error, por favor inténtelo de nuevo más tarde.",
       );
-      
     }
   }
 }

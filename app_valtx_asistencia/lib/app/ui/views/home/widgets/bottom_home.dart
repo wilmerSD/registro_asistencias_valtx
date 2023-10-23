@@ -14,10 +14,11 @@ class BottomHome extends StatelessWidget {
     return GetBuilder<HomeController>(
         builder: (controller) => Container(
               //height: MediaQuery.of(context).size.height * 0.11,
+              height: 57.h,
               margin: EdgeInsets.only(
                 left: kMarginApp.w,
                 right: kMarginApp.w,
-                bottom: 20.0,
+                bottom: 20.0.h,
               ),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
@@ -37,11 +38,16 @@ class BottomHome extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: 57.h,
                     child: Obx(
                       () {
                         return controller.isLoading.value
-                            ? const Center(child: CircularProgressIndicator())
+                            ? Center(
+                                child: SizedBox(
+                                    height: 30.0.h,
+                                    width: 30.0.w,
+                                    child:
+                                        CircularProgressIndicator(value: 1.h)))
                             : controller.responseUserAssistanceMonth.isEmpty
                                 ? Center(
                                     child: Text(
@@ -51,13 +57,13 @@ class BottomHome extends StatelessWidget {
                                         )),
                                   )
                                 : ListView.separated(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15.w),
                                     scrollDirection: Axis.horizontal,
                                     itemCount: controller
                                         .responseUserAssistanceMonth.length,
                                     separatorBuilder: (context, index) {
-                                      return const SizedBox(width: 95.0);
+                                      return SizedBox(width: 85.0.w);
                                     },
                                     itemBuilder: (context, index) {
                                       final itemMonth = controller
@@ -69,11 +75,13 @@ class BottomHome extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
+                                            textScaleFactor: 1,
                                             '${itemMonth.quantity}',
                                             style: AppTextStyle(context).bold14(
                                                 color: AppColors.primary),
                                           ),
                                           Text(
+                                            textScaleFactor: 1,
                                             itemMonth.description!,
                                             style: AppTextStyle(context)
                                                 .medium12(

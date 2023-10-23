@@ -5,6 +5,7 @@ import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class LoginView extends StatelessWidget {
@@ -12,6 +13,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    print('prrint:$screenHeight dddd $screenWidth');
     return GetBuilder<LoginController>(
       builder: (controller) => Scaffold(
         backgroundColor: Colors.white,
@@ -38,7 +42,8 @@ class LoginView extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: kMarginLargeApp),
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.50,
+                  height: /* MediaQuery.of(context).size.height * 0.50, */
+                      489.h,
                   decoration: const BoxDecoration(
                     color: AppColors.backgroundColor,
                     borderRadius: BorderRadius.only(
@@ -49,7 +54,7 @@ class LoginView extends StatelessWidget {
                   child: Column(
                     children: [
                       const FormLogin(),
-                      const SizedBox(height: 40.0),
+                      SizedBox(height: 33.h),
                       Obx(
                         () => BtnPrimaryInk(
                           text: controller.isLoading.value

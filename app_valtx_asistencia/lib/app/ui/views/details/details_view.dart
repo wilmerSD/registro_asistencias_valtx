@@ -7,6 +7,7 @@ import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dar
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DetailView extends StatelessWidget {
@@ -18,7 +19,8 @@ class DetailView extends StatelessWidget {
         builder: (controller) => Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
-                toolbarHeight: MediaQuery.of(context).size.height * 0.08,
+                toolbarHeight: /* MediaQuery.of(context).size.height * 0.08, */
+                    80.h,
                 elevation: 0.18,
                 iconTheme: const IconThemeData(color: AppColors.primary),
                 backgroundColor: AppColors.backgroundColor,
@@ -31,7 +33,8 @@ class DetailView extends StatelessWidget {
               ),
               body: const Stack(children: [
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  /*  mainAxisAlignment: MainAxisAlignment.spaceAround, */
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     //Calendario
                     Calendar(),

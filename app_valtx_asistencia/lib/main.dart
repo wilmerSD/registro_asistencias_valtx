@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     return ScreenUtilInit(
       /* localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
@@ -34,31 +33,28 @@ class MyApp extends StatelessWidget {
         supportedLocales: const [
           Locale("es"),
         ],*/
-      designSize: ScreenUtil.defaultSize,
+      designSize: const Size(390, 844) /* ScreenUtil.defaultSize */,
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => GetMaterialApp(
-      title: 'Registro de asistencia',  
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blueDark),
-        useMaterial3: true,
+        title: 'Registro de asistencia',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blueDark),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppRoutesName.SPLASH,
+        getPages: AppRoutes.routes,
       ),
-      debugShowCheckedModeBanner: false,
-      
-      initialRoute: AppRoutesName.SPLASH,
-      getPages: AppRoutes.routes,
-      
-    ),
-    
     );
   }
 }
 
 //   WidgetsFlutterBinding.ensureInitialized();//asegura que los widgets estén inicializados antes de ejecutar la aplicacion
-//    SystemChrome.setPreferredOrientations([//orientacion de la app, solo vertical
-//     DeviceOrientation.portraitUp,
-//     DeviceOrientation.portraitDown,
-//   ]);
+    /* SystemChrome.setPreferredOrientations([//orientacion de la app, solo vertical
+     DeviceOrientation.portraitUp,
+     DeviceOrientation.portraitDown,
+   ]); */
 //   AppConfig.initialize();
 //   DioConfig.initialize();
 //   DependencyInjection.initialize();

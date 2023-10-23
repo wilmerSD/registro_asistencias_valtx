@@ -30,10 +30,13 @@ class HomeView extends StatelessWidget {
               children: [
                 //Detalles
                 const AppBarHome(),
-                Expanded(child: Container()),
+                Expanded(
+                    child: Container(
+                  height: 398.h,
+                )),
                 //Asistencias de la semana
                 const ContentWeekHome(),
-                SizedBox(height: 15.h),
+                SizedBox(height: 12.h),
                 //Información del usuario
                 const UserInformation(),
                 DashedLine(
@@ -64,8 +67,8 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(
-                  height: 10.0,
+                SizedBox(
+                  height: 18.0.h,
                 ),
               ],
             ),

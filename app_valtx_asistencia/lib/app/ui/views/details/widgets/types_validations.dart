@@ -3,6 +3,7 @@ import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 final helpers = Helpers();
@@ -14,8 +15,8 @@ class TypesValidations extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
       builder: (controller) => Container(
-        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-        height: MediaQuery.of(context).size.height * 0.07,
+        margin: EdgeInsets.symmetric(horizontal: 20.0.w),
+        height: /* MediaQuery.of(context).size.height * 0.09.h */ 55.h,
         child: Obx(
           () => controller.isLoadingTypesValidation.value
               ? const Center(child: CircularProgressIndicator())
@@ -23,7 +24,7 @@ class TypesValidations extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.responseTypesValidations.length,
                   separatorBuilder: (context, index) {
-                    return const SizedBox(width: 45.0);
+                    return SizedBox(width: 45.0.h);
                   },
                   itemBuilder: (context, index) {
                     final item = controller.responseTypesValidations[index];
@@ -33,15 +34,16 @@ class TypesValidations extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          width: 20,
-                          height: 20,
+                          width: 20.w,
+                          height: 20.h,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: circleColor,
                           ),
                         ),
-                        const SizedBox(height: 10.0),
+                        SizedBox(height: 10.0.h),
                         Text(
+                          textScaleFactor: 1,
                           item.description,
                           style: AppTextStyle(context).medium12(
                             color: AppColors.grayBlue,

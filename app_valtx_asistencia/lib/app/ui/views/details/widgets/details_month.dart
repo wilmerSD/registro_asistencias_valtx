@@ -2,6 +2,7 @@ import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dar
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DetailslMonth extends StatelessWidget {
@@ -29,7 +30,7 @@ class DetailslMonth extends StatelessWidget {
                   height: 3.0,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: /* MediaQuery.of(context).size.height * 0.1, */ 88.h,
                   child: Obx(() {
                     return controller.isLoading.value
                         ? const Center(child: CircularProgressIndicator())
@@ -41,12 +42,11 @@ class DetailslMonth extends StatelessWidget {
                                     )),
                               )
                             : ListView.separated(
-                                padding: const EdgeInsets.only(
-                                    left: 15.0, right: 15),
+                                padding: EdgeInsets.symmetric(horizontal: 15.w),
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller.responseDataMes.length,
                                 separatorBuilder: (context, index) {
-                                  return const SizedBox(width: 95.0);
+                                  return SizedBox(width: 85.0.w);
                                 },
                                 itemBuilder: (context, index) {
                                   final itemMonth =
@@ -55,14 +55,19 @@ class DetailslMonth extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
+                                        textScaleFactor: 1,
                                         '${itemMonth.quantity}',
-                                        style: const TextStyle(
+                                        style: AppTextStyle(context).extra20(
                                           color: AppColors.primary,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
                                         ),
+                                        /* TextStyle(
+                                                color: AppColors.primary,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20,
+                                                fontFamily: 'Montserrat'), */
                                       ),
                                       Text(
+                                        textScaleFactor: 1,
                                         itemMonth.description!,
                                         style: AppTextStyle(context).medium12(
                                           color: AppColors.grayBlue,

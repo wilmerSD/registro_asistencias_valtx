@@ -23,7 +23,7 @@ class BtnPrimaryInk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
+      height: 60.h,
       margin: margin,
       decoration: BoxDecoration(
         gradient: AppColors.primaryGradient,
@@ -48,6 +48,7 @@ class BtnPrimaryInk extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
+                  textScaleFactor: 1,
                   text,
                   style: AppTextStyle(context)
                       .bold18(color: AppColors.backgroundColor),

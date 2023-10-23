@@ -17,6 +17,7 @@ class ContentWeekHome extends StatelessWidget {
     final helpers = Helpers();
     return GetBuilder<HomeController>(
       builder: (controller) => Container(
+        height: 76.h,
         margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
         decoration: BoxDecoration(
           boxShadow: [
@@ -33,24 +34,31 @@ class ContentWeekHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: const BoxDecoration(
+              padding: EdgeInsets.only(top: 8.h, right: 15.w, left: 15.w),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10.0),
-                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0.w),
+                  topLeft: Radius.circular(10.0.w),
                 ),
-                color: Colors.white,
+                color: AppColors.backgroundColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
+                    textScaleFactor: 1,
                     'Mis marcaciones recientes',
-                    style: AppTextStyle(context).bold14(
+                    style: /* AppTextStyle(context).bold14(
                       color: AppColors.primary,
-                    ),
+                    ), */
+                        TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            fontFamily: 'Montserrat'),
                   ),
                   Text(
+                    textScaleFactor: 1,
                     helpers.getWeekCurrent(),
                     style: AppTextStyle(context).bold14(
                       color: AppColors.primary,
@@ -60,23 +68,26 @@ class ContentWeekHome extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(
-                left: 10.0,
-                right: 10.0,
-                bottom: 10.0,
+              padding: EdgeInsets.only(
+                left: 10.0.w,
+                right: 10.0.w,
               ),
-              height: MediaQuery.of(context).size.height * 0.07,
+              height: /* MediaQuery.of(context).size.height * 0.09.h, */ 43.h,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(kRadiusMedium),
                   bottomRight: Radius.circular(kRadiusMedium),
                 ),
-                color: Colors.white,
+                color: AppColors.backgroundColor,
               ),
               child: Obx(
                 () {
                   return controller.isLoading.value
-                      ? const Center(child: CircularProgressIndicator())
+                      ? Center(
+                          child: SizedBox(
+                              height: 20.0.h,
+                              width: 20.0.w,
+                              child: CircularProgressIndicator(value: 1.h)))
                       : controller.responseUserAssistanceWeek.isEmpty
                           ? Center(
                               child: Text('${controller.statusMessageWeek}',
@@ -89,7 +100,7 @@ class ContentWeekHome extends StatelessWidget {
                               itemCount:
                                   controller.responseUserAssistanceWeek.length,
                               separatorBuilder: (context, index) {
-                                return const SizedBox(width: 25.0);
+                                return SizedBox(width: 33.0.w);
                               },
                               itemBuilder: (context, index) {
                                 final item = controller
@@ -100,18 +111,24 @@ class ContentWeekHome extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: 20,
-                                      height: 20,
+                                      width: 18.w,
+                                      height: 18.h,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: circleColor,
                                       ),
                                     ),
-                                    SizedBox(height: 5.h),
+                                    SizedBox(height: 1.h),
                                     Text(
+                                      textScaleFactor: 1,
                                       item.day ?? '',
                                       style: AppTextStyle(context)
                                           .normal12(color: AppColors.grayBlue),
+                                      /* TextStyle(
+                                              color: AppColors.grayBlue,
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12,
+                                              fontFamily: 'Montserrat'), */
                                     ),
                                   ],
                                 );

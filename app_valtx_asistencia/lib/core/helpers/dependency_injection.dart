@@ -1,14 +1,10 @@
-import 'package:app_valtx_asistencia/app/providers/asisstances_week_user_provider.dart';
-import 'package:app_valtx_asistencia/app/providers/assistances_day_user_provider.dart';
-import 'package:app_valtx_asistencia/app/providers/assistances_month_user_provider.dart';
+import 'package:app_valtx_asistencia/app/providers/assistances_user_provider.dart';
 import 'package:app_valtx_asistencia/app/providers/authentication_provider.dart';
 import 'package:app_valtx_asistencia/app/providers/register_marking_user_provider.dart';
 import 'package:app_valtx_asistencia/app/providers/types_assistances_provider.dart';
 import 'package:app_valtx_asistencia/app/providers/types_validations_provider.dart';
 import 'package:app_valtx_asistencia/app/providers/user_provider.dart';
-import 'package:app_valtx_asistencia/app/repositories/asisstances_day_user_repository.dart';
-import 'package:app_valtx_asistencia/app/repositories/asisstances_month_user_repository.dart';
-import 'package:app_valtx_asistencia/app/repositories/asisstances_week_user_repository.dart';
+import 'package:app_valtx_asistencia/app/repositories/assistances_user_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/authentication_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/register_marking_user_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/types_assistances_repository.dart';
@@ -97,7 +93,7 @@ class DependencyInjection {
       () => AssistanceDayUserRepository(),
       fenix: true,
     );
-    
+
     Get.lazyPut<RegisterMarkingUserRepository>(
       () => RegisterMarkingUserRepository(),
       fenix: true,

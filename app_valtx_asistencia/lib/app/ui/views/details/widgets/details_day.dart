@@ -3,6 +3,7 @@ import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 final helpers = Helpers();
@@ -14,8 +15,8 @@ class DetailsDay extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
         builder: (controller) => Container(
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-              height: MediaQuery.of(context).size.height * 0.28,
+              margin: EdgeInsets.symmetric(horizontal: 20.0.w),
+              height: /* MediaQuery.of(context).size.height * 0.28 */ 190.h,
               child: Obx(() {
                 return controller.isLoading.value
                     ? const Center(child: CircularProgressIndicator())
@@ -31,10 +32,10 @@ class DetailsDay extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: ListView.separated(
-                                  padding: const EdgeInsets.only(top: 10),
+                                  padding: EdgeInsets.only(top: 10.h),
                                   itemCount: controller.responseDataDia.length,
                                   separatorBuilder: (context, index) {
-                                    return const SizedBox(height: 20.0);
+                                    return SizedBox(height: 20.0.h);
                                   },
                                   itemBuilder: (context, index) {
                                     final itemDay =
@@ -46,15 +47,16 @@ class DetailsDay extends StatelessWidget {
                                         Row(
                                           children: [
                                             Container(
-                                              width: 20,
-                                              height: 20,
+                                              width: 20.w,
+                                              height: 20.h,
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: circleColordia,
                                               ),
                                             ),
-                                            const SizedBox(width: 15.0),
+                                            SizedBox(width: 15.0.w),
                                             Text(
+                                              textScaleFactor: 1,
                                               itemDay.time ?? '',
                                               style:
                                                   AppTextStyle(context).extra14(
@@ -63,12 +65,13 @@ class DetailsDay extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        const SizedBox(width: 20.0),
+                                        SizedBox(width: 20.0.w),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
+                                              textScaleFactor: 1,
                                               itemDay.typesMarking!,
                                               style:
                                                   AppTextStyle(context).bold14(
@@ -76,6 +79,7 @@ class DetailsDay extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
+                                              textScaleFactor: 1,
                                               'Sin observaciones',
                                               style: AppTextStyle(context)
                                                   .medium14(
@@ -89,8 +93,8 @@ class DetailsDay extends StatelessWidget {
                                   },
                                 ),
                               ),
-                              const SizedBox(
-                                width: 50,
+                              SizedBox(
+                                width: 50.w,
                               )
                             ],
                           );

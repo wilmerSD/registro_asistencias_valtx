@@ -17,19 +17,25 @@ class FormLogin extends GetView<LoginController> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 30.h),
+        SizedBox(height: 64.h),
         Text(
+          textScaleFactor: 1,
           "Sistema de asistencia",
-          style: AppTextStyle(context).bold24(color: AppColors.primary),
+          style: AppTextStyle(context).bold26(color: AppColors.primary),
+          /* style: TextStyle(
+              color: AppColors.primary,
+              fontWeight: FontWeight.w700,
+              fontSize: 26,
+              fontFamily: 'Montserrat'), */
         ),
-        SizedBox(height: 25.h),
+        SizedBox(height: 40.h),
         FieldForm(
           label: "Usuario",
           hintText: "",
           textInputType: TextInputType.emailAddress,
           textEditingController: controller.ctrlEmailText,
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 25.h),
         Obx(
           () => FieldForm(
             label: "Contraseña",

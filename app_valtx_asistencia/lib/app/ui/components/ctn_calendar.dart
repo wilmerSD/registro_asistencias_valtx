@@ -1,6 +1,7 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -18,9 +19,10 @@ class CtnCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
       builder: (controller) => SfDateRangePicker(
+        headerHeight: 30.h,
         controller: _controller,
         enablePastDates: true,
-        selectionRadius: 20,
+        selectionRadius: 20.w,
         showTodayButton: false,
         selectionTextStyle: const TextStyle(
           color: Colors.white,
@@ -47,10 +49,10 @@ class CtnCalendar extends StatelessWidget {
         ),
         onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
           DateTime? selectedDate = args.value;
-           String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
+          String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
           if (formattedDate != '') {
             controller.getAssistancesMonthUser(formattedDate);
-            controller.assistancesDayUser(formattedDate);  
+            controller.assistancesDayUser(formattedDate);
           }
         },
       ),

@@ -22,6 +22,7 @@ class AltMarcarBad extends StatelessWidget {
             textPrimaryButton: "OK",
             widgetContent: Text(
               "${controller.statusMessageUserAssistance.value}",
+              textScaleFactor: 1,
               textAlign: TextAlign.center,
               style: AppTextStyle(context).bold14(
                 color: AppColors.primary,

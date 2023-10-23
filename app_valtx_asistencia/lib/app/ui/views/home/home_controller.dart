@@ -7,12 +7,12 @@ import 'package:app_valtx_asistencia/app/models/response/response_assistances_we
 import 'package:app_valtx_asistencia/app/models/response/response_register_marking_user_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_types_assistances_model.dart';
 import 'package:app_valtx_asistencia/app/models/response/response_user_information_model.dart';
+import 'package:app_valtx_asistencia/app/repositories/assistances_user_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/types_validations_repository.dart';
+import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/helpers/keys.dart';
 import 'package:app_valtx_asistencia/app/models/request/request_id_user_model.dart';
 import 'package:app_valtx_asistencia/app/models/request/request_marking_user_model.dart';
-import 'package:app_valtx_asistencia/app/repositories/asisstances_month_user_repository.dart';
-import 'package:app_valtx_asistencia/app/repositories/asisstances_week_user_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/register_marking_user_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/types_assistances_repository.dart';
 import 'package:app_valtx_asistencia/app/repositories/user_repositori.dart';
@@ -73,9 +73,9 @@ class HomeController extends GetxController {
   var responseUserAssistanceMonth = <DatumMonth>[].obs;
   RxString statusMessageTypesMarking = RxString("");
   RxString statusMessageUserInformation = RxString("");
-  RxString statusMessageWeek =  RxString("");
+  RxString statusMessageWeek = RxString("");
   RxString statusMessageMonth = RxString("");
-  RxString statusMessageUserAssistance =  RxString("");
+  RxString statusMessageUserAssistance = RxString("");
   RxString messageError = RxString("");
   RxString nameLocation = "Obteniendo ubicación...".obs;
   LatLng workPosition = const LatLng(-12.086660314676623, -76.99120477371234);
@@ -143,9 +143,10 @@ class HomeController extends GetxController {
       RequestAssistanceInformationModel(
           idUser: int.parse(Iduser), date: formattedDate),
     );
-    isLoading.value = false;
+
     responseUserAssistanceMonth.assignAll(response.data ?? []);
     statusMessageMonth.value = response.statusMessage;
+    isLoading.value = false;
     if (!response.success) {
       return;
     }
@@ -162,9 +163,10 @@ class HomeController extends GetxController {
           idUser: int.parse(Iduser),
         ),
       );
-      isLoading.value = false;
+
       responseUserAssistanceWeek.assignAll(response.data ?? []);
       statusMessageWeek.value = response.statusMessage;
+      isLoading.value = false;
       if (!response.success) {
         return;
       }
@@ -178,8 +180,8 @@ class HomeController extends GetxController {
 
   //Registrar asistencia
   assistMarker(int selectedValue) async {
+    isLoading.value = true;
     try {
-      isLoading.value = true;
       String Iduser = await StorageService.get(Keys.kIdUser);
       final response = await _registerMarkingUser.postRegisterMarking(
         RequestMarkingUserModel(
@@ -188,20 +190,26 @@ class HomeController extends GetxController {
             latitude: latitude,
             longitude: longitude),
       );
-      isLoading.value = false;
+
       statusAssistance.value = response.success;
       statusMessageUserAssistance.value = response.statusMessage;
       responseUserAssistance.value = response.data;
+
+      isLoading.value = false;
       if (!response.success) {
         return;
       }
       _getAssistancesMonthUser(formattedDate);
       _getAssistancesWeekhUser();
     } catch (error) {
-      isLoading.value = false;
       isVisible.value = true;
       messageError.value =
           'Ha ocurrido un error, por favor inténtelo de nuevo mas tarde';
+      Helpers.showSnackBar(
+        Get.context!,
+        title: "Validar",
+        message: messageError.value,
+      );
     }
   }
 

@@ -27,12 +27,14 @@ class AltMarcarOk extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('Asistencia registrada como: $registradoComo',
+                        textScaleFactor: 1,
                         textAlign: TextAlign.center,
                         style: AppTextStyle(context).bold16(
                           color: AppColors.primary,
                         )),
                     if (registradoComo == 'Falta')
                       Text('Por favor comunicarse con Líder Técnico',
+                          textScaleFactor: 1,
                           style: AppTextStyle(context).medium14(
                             color: AppColors.primary,
                           ),
@@ -45,6 +47,8 @@ class AltMarcarOk extends StatelessWidget {
                           color: AppColors.degradedInitial,
                         ),
                         Text(controller.nameLocation.value,
+                            textScaleFactor: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: AppTextStyle(context).bold16(
                               color: AppColors.primary,
                             )),
