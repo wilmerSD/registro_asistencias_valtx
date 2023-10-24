@@ -24,7 +24,7 @@ class TypesValidations extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.responseTypesValidations.length,
                   separatorBuilder: (context, index) {
-                    return SizedBox(width: 45.0.h);
+                    return SizedBox(width: 45.0.w);
                   },
                   itemBuilder: (context, index) {
                     final item = controller.responseTypesValidations[index];

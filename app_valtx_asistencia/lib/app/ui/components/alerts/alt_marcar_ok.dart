@@ -26,20 +26,20 @@ class AltMarcarOk extends StatelessWidget {
                     Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('Asistencia registrada como: $registradoComo',
+                    Text('$registradoComo',
                         textScaleFactor: 1,
                         textAlign: TextAlign.center,
                         style: AppTextStyle(context).bold16(
                           color: AppColors.primary,
                         )),
-                    if (registradoComo == 'Falta')
-                      Text('Por favor comunicarse con Líder Técnico',
+                    /* if (registradoComo!.contains('Falta'))
+                      Text('Por favor comunicarse con tu Líder Técnico',
                           textScaleFactor: 1,
                           style: AppTextStyle(context).medium14(
                             color: AppColors.primary,
                           ),
-                          textAlign: TextAlign.center),
-                    Row(
+                          textAlign: TextAlign.center), */
+                    /* Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(
@@ -53,7 +53,7 @@ class AltMarcarOk extends StatelessWidget {
                               color: AppColors.primary,
                             )),
                       ],
-                    )
+                    ) */
                   ],
                 ),
                 /* ), */

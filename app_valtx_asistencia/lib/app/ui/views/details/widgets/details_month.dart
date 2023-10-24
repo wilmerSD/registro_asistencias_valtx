@@ -46,7 +46,7 @@ class DetailslMonth extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller.responseDataMes.length,
                                 separatorBuilder: (context, index) {
-                                  return SizedBox(width: 85.0.w);
+                                  return SizedBox(width: 40.0.w);
                                 },
                                 itemBuilder: (context, index) {
                                   final itemMonth =
@@ -61,10 +61,10 @@ class DetailslMonth extends StatelessWidget {
                                           color: AppColors.primary,
                                         ),
                                         /* TextStyle(
-                                                color: AppColors.primary,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20,
-                                                fontFamily: 'Montserrat'), */
+                                                  color: AppColors.primary,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                  fontFamily: 'Montserrat'), */
                                       ),
                                       Text(
                                         textScaleFactor: 1,

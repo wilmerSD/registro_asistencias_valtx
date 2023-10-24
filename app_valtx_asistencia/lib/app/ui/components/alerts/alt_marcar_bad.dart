@@ -20,13 +20,24 @@ class AltMarcarBad extends StatelessWidget {
             },
             isOnlyPrimary: true,
             textPrimaryButton: "OK",
-            widgetContent: Text(
-              "${controller.statusMessageUserAssistance.value}",
-              textScaleFactor: 1,
-              textAlign: TextAlign.center,
-              style: AppTextStyle(context).bold14(
-                color: AppColors.primary,
-              ),
+            widgetContent: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "${controller.statusMessageUserAssistance.value}",
+                  textScaleFactor: 1,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle(context).bold14(
+                    color: AppColors.primary,
+                  ),
+                ),
+                /* Text('Por favor comunicarse con tu Líder Técnico',
+                    textScaleFactor: 1,
+                    style: AppTextStyle(context).medium14(
+                      color: AppColors.primary,
+                    ),
+                    textAlign: TextAlign.center), */
+              ],
             ),
           );
         },

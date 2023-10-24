@@ -58,12 +58,12 @@ class BottomHome extends StatelessWidget {
                                   )
                                 : ListView.separated(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 15.w),
+                                        EdgeInsets.symmetric(horizontal: 20.w),
                                     scrollDirection: Axis.horizontal,
                                     itemCount: controller
                                         .responseUserAssistanceMonth.length,
                                     separatorBuilder: (context, index) {
-                                      return SizedBox(width: 85.0.w);
+                                      return SizedBox(width: 35.0.w);
                                     },
                                     itemBuilder: (context, index) {
                                       final itemMonth = controller
