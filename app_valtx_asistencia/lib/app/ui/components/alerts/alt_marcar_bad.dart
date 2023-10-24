@@ -14,7 +14,7 @@ class AltMarcarBad extends StatelessWidget {
       builder: (controller) => Obx(
         () {
           return AlertDialogComponent(
-            /* content: controller.statusMessageUserAssistance.value, */
+            headerTitle: "Información",
             onTapButton: () {
               Get.back();
             },
@@ -24,19 +24,21 @@ class AltMarcarBad extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "${controller.statusMessageUserAssistance.value}",
+                  controller.statusMessageUserAssistance.value,
                   textScaleFactor: 1,
                   textAlign: TextAlign.center,
                   style: AppTextStyle(context).bold14(
                     color: AppColors.primary,
                   ),
                 ),
-                /* Text('Por favor comunicarse con tu Líder Técnico',
+                const SizedBox(height: 10.0,),
+                Text('De tener algún inconveniente comuníquese con su Líder Técnico.',
                     textScaleFactor: 1,
+                    textAlign: TextAlign.center,
                     style: AppTextStyle(context).medium14(
                       color: AppColors.primary,
                     ),
-                    textAlign: TextAlign.center), */
+                    ),
               ],
             ),
           );

@@ -16,7 +16,7 @@ class DetailsDay extends StatelessWidget {
     return GetBuilder<DetailsController>(
         builder: (controller) => Container(
               margin: EdgeInsets.symmetric(horizontal: 20.0.w),
-              height: /* MediaQuery.of(context).size.height * 0.28 */ 190.h,
+              height: 240.h,
               child: Obx(() {
                 return controller.isVisibleDay.value
                     ? const Center(child: CircularProgressIndicator())
@@ -27,76 +27,57 @@ class DetailsDay extends StatelessWidget {
                                   color: AppColors.grayBlue,
                                 )),
                           )
-                        : Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: ListView.separated(
-                                  padding: EdgeInsets.only(top: 10.h),
-                                  itemCount: controller.responseDataDia.length,
-                                  separatorBuilder: (context, index) {
-                                    return SizedBox(height: 20.0.h);
-                                  },
-                                  itemBuilder: (context, index) {
-                                    final itemDay =
-                                        controller.responseDataDia[index];
-                                    Color circleColordia = helpers
-                                        .getCircleColor(itemDay.idValidation!);
-                                    return Row(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: 20.w,
-                                              height: 20.h,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: circleColordia,
-                                              ),
-                                            ),
-                                            SizedBox(width: 15.0.w),
-                                            Text(
-                                              textScaleFactor: 1,
-                                              itemDay.time ?? '',
-                                              style:
-                                                  AppTextStyle(context).extra14(
-                                                color: AppColors.grey,
-                                              ),
-                                            ),
-                                          ],
+                        : ListView.separated(
+                            itemCount: controller.responseDataDia.length,
+                            separatorBuilder: (context, index) {
+                              return SizedBox(height: 20.0.h);
+                            },
+                            itemBuilder: (context, index) {
+                              final itemDay = controller.responseDataDia[index];
+                              Color circleColordia =
+                                  helpers.getCircleColor(itemDay.idValidation!);
+                              return Row(
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 10.h,
+                                        backgroundColor: circleColordia,
+                                      ),
+                                      SizedBox(width: 15.0.w),
+                                      Text(
+                                        textScaleFactor: 1,
+                                        itemDay.time ?? '',
+                                        style: AppTextStyle(context).extra14(
+                                          color: AppColors.grey,
                                         ),
-                                        SizedBox(width: 20.0.w),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              textScaleFactor: 1,
-                                              itemDay.typesMarking!,
-                                              style:
-                                                  AppTextStyle(context).bold14(
-                                                color: AppColors.primary,
-                                              ),
-                                            ),
-                                            Text(
-                                              textScaleFactor: 1,
-                                              'Sin observaciones',
-                                              style: AppTextStyle(context)
-                                                  .medium14(
-                                                color: AppColors.grey,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                width: 50.w,
-                              )
-                            ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20.0.w),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        textScaleFactor: 1,
+                                        itemDay.typesMarking!,
+                                        style: AppTextStyle(context).bold14(
+                                          color: AppColors.primary,
+                                        ),
+                                      ),
+                                      Text(
+                                        textScaleFactor: 1,
+                                        'Sin observaciones',
+                                        style: AppTextStyle(context).medium14(
+                                          color: AppColors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              );
+                            },
                           );
               }),
             ));

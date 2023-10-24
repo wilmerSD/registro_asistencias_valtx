@@ -60,11 +60,7 @@ class DetailslMonth extends StatelessWidget {
                                         style: AppTextStyle(context).extra20(
                                           color: AppColors.primary,
                                         ),
-                                        /* TextStyle(
-                                                  color: AppColors.primary,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                  fontFamily: 'Montserrat'), */
+
                                       ),
                                       Text(
                                         textScaleFactor: 1,

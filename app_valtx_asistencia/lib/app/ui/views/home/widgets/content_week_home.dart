@@ -68,11 +68,8 @@ class ContentWeekHome extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(
-                left: 10.0.w,
-                right: 10.0.w,
-              ),
-              height: /* MediaQuery.of(context).size.height * 0.09.h, */ 43.h,
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              height: 43.h,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(kRadiusMedium),
@@ -110,25 +107,16 @@ class ContentWeekHome extends StatelessWidget {
                                 return Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
-                                      width: 18.w,
-                                      height: 18.h,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: circleColor,
+                                    CircleAvatar(
+                                        radius: 10.h,
+                                        backgroundColor: circleColor,
                                       ),
-                                    ),
                                     SizedBox(height: 1.h),
                                     Text(
                                       textScaleFactor: 1,
                                       item.day ?? '',
                                       style: AppTextStyle(context)
                                           .normal12(color: AppColors.grayBlue),
-                                      /* TextStyle(
-                                              color: AppColors.grayBlue,
-                                              fontWeight: FontWeight.w300,
-                                              fontSize: 12,
-                                              fontFamily: 'Montserrat'), */
                                     ),
                                   ],
                                 );

@@ -14,16 +14,14 @@ class AltMarcarOk extends StatelessWidget {
         builder: (controller) => Obx(() {
               final item = controller.responseUserAssistance;
               String? registradoComo = item.value.registradoComo;
-              String? ubicacion = item.value.ubicacin;
+              String? detail = item.value.detalle;
               return AlertDialogComponent(
+                headerTitle: "Información",
                 content: controller.statusMessageUserAssistance.value,
                 onTapButton: () {
                   Get.back();
                 },
-                widgetContent: /* Container(
-                  height: 200,
-                  child:  */
-                    Column(
+                widgetContent: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('$registradoComo',
@@ -32,31 +30,19 @@ class AltMarcarOk extends StatelessWidget {
                         style: AppTextStyle(context).bold16(
                           color: AppColors.primary,
                         )),
-                    /* if (registradoComo!.contains('Falta'))
-                      Text('Por favor comunicarse con tu Líder Técnico',
-                          textScaleFactor: 1,
-                          style: AppTextStyle(context).medium14(
-                            color: AppColors.primary,
-                          ),
-                          textAlign: TextAlign.center), */
-                    /* Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.location_on_sharp,
-                          color: AppColors.degradedInitial,
-                        ),
-                        Text(controller.nameLocation.value,
-                            textScaleFactor: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyle(context).bold16(
-                              color: AppColors.primary,
-                            )),
-                      ],
-                    ) */
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      detail ?? '',
+                      textScaleFactor: 1,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle(context).medium14(
+                        color: AppColors.primary,
+                      ),
+                    ),
                   ],
                 ),
-                /* ), */
                 isOnlyPrimary: true,
                 textPrimaryButton: "OK",
               );

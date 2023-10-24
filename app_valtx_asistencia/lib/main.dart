@@ -5,11 +5,16 @@ import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/routes/app_routes.dart';
 import 'package:app_valtx_asistencia/routes/app_routes_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
+  /* SystemChrome.setPreferredOrientations([//orientacion de la app, solo vertical
+     DeviceOrientation.portraitUp,
+     DeviceOrientation.portraitDown,
+   ]); */
   DependencyInjection.initialize();
   AppConfig.initialize();
   DioConfig.initialize();

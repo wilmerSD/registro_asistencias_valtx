@@ -24,7 +24,6 @@ class CtnCalendar extends StatelessWidget {
         showTodayButton: false,
         allowViewNavigation: false,
         showNavigationArrow: false,
-        selectionRadius: 20,
         maxDate: maxDate,
         //minDate: minDate,
         todayHighlightColor: AppColors.primary,

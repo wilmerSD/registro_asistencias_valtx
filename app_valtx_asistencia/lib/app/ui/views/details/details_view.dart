@@ -20,7 +20,7 @@ class DetailView extends StatelessWidget {
               backgroundColor: Colors.white,
               appBar: AppBar(
                 toolbarHeight: /* MediaQuery.of(context).size.height * 0.08, */
-                    80.h,
+                    70.h,
                 elevation: 0.18,
                 iconTheme: const IconThemeData(color: AppColors.primary),
                 backgroundColor: AppColors.backgroundColor,
@@ -40,8 +40,10 @@ class DetailView extends StatelessWidget {
                     Calendar(),
                     //Tipos de validación
                     TypesValidations(),
+                    SizedBox(height: 10,),
                     //Fecha de hoy
                     DateToday(),
+                    SizedBox(height: 20,),
                     //Marcaciones del dia
                     DetailsDay(),
                     //faltas o tardanzas del mes

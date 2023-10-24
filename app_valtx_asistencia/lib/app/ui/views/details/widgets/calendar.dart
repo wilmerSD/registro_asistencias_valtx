@@ -13,15 +13,15 @@ class Calendar extends StatelessWidget {
     return GetBuilder<DetailsController>(
       builder: (controller) => Container(
         margin: EdgeInsets.symmetric(horizontal: 10.0.w),
-        height: 250.h,
+        height: 300.h,
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [
             Container(
               alignment: AlignmentDirectional.topCenter,
-              margin: EdgeInsets.only(top: 3.h),
-              width: /* MediaQuery.of(context).size.width * */ 140.w,
-              height: /* MediaQuery.of(context).size.height * 0.04.h */ 24.h,
+              margin: EdgeInsets.only(top: 6.h),
+              width: 140.w,
+              height: 24.h,
               decoration: BoxDecoration(
                 color: AppColors.primary,
                 borderRadius: BorderRadius.circular(5.0.h),

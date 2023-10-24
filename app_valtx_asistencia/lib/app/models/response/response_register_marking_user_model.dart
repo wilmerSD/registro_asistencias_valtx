@@ -25,15 +25,15 @@ class ResponseRegisterMarkingUserModel {
 
 class DataMark {
   String? registradoComo;
-  String? ubicacin;
+  String? detalle;
 
   DataMark({
     this.registradoComo,
-     this.ubicacin,
+     this.detalle,
   });
 
   factory DataMark.fromJson(Map<String, dynamic> json) => DataMark(
         registradoComo: json["Registrado como"]??'',
-        ubicacin: json["Ubicación"],
+        detalle: json["Detalle"],
       );
 }

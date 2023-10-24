@@ -13,22 +13,17 @@ class DateToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(builder: (controller) {
-      return Obx(() =>
-
-       Container(
-          /* padding: EdgeInsets.only(left: 10.0.w), */
-          margin: EdgeInsets.only(top: 5.h, left: 20.w),
+      return Obx(() => Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.w),
           width: double.infinity,
-          height: 30.0.h,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              textScaleFactor: 1.2,
-              '${controller.day} ${helpers.getMonthName(controller.montInt)} ${controller.age}',
-              style: AppTextStyle(context).bold18(
-                color: AppColors.primary,
-              ),
+          height: 25.0.h,
+          child: Text(
+            textScaleFactor: 1.2,
+            '${controller.day} ${helpers.getMonthName(controller.montInt)} ${controller.age}',
+            style: AppTextStyle(context).bold18(
+              color: AppColors.primary,
             ),
+            textAlign: TextAlign.left,
           )));
     });
   }

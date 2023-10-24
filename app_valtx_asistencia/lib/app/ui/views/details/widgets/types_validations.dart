@@ -16,7 +16,7 @@ class TypesValidations extends StatelessWidget {
     return GetBuilder<DetailsController>(
       builder: (controller) => Container(
         margin: EdgeInsets.symmetric(horizontal: 20.0.w),
-        height: /* MediaQuery.of(context).size.height * 0.09.h */ 55.h,
+        height: /* MediaQuery.of(context).size.height * 0.09.h */ 50.h,
         child: Obx(
           () => controller.isLoadingTypesValidation.value
               ? const Center(child: CircularProgressIndicator())
@@ -33,18 +33,15 @@ class TypesValidations extends StatelessWidget {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 20.w,
-                          height: 20.h,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: circleColor,
-                          ),
+                        CircleAvatar(
+                          radius: 10.h,
+                           backgroundColor: circleColor,
                         ),
                         SizedBox(height: 10.0.h),
                         Text(
                           textScaleFactor: 1,
                           item.description,
+                          overflow: TextOverflow.ellipsis,
                           style: AppTextStyle(context).medium12(
                             color: AppColors.grayBlue,
                           ),
