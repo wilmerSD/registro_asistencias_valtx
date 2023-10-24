@@ -18,7 +18,7 @@ class DetailsDay extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 20.0.w),
               height: /* MediaQuery.of(context).size.height * 0.28 */ 190.h,
               child: Obx(() {
-                return controller.isLoading.value
+                return controller.isVisibleDay.value
                     ? const Center(child: CircularProgressIndicator())
                     : controller.responseDataDia.isEmpty
                         ? Center(

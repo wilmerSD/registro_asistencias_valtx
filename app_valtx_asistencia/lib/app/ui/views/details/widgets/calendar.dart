@@ -1,4 +1,4 @@
-import 'package:app_valtx_asistencia/app/ui/components/ctn_calendar.dart';
+import 'package:app_valtx_asistencia/app/ui/views/details/widgets/ctn_calendar.dart';
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class Calendar extends StatelessWidget {
             Container(
               alignment: AlignmentDirectional.topCenter,
               margin: EdgeInsets.only(top: 3.h),
-              width: MediaQuery.of(context).size.width * 0.4.w,
+              width: /* MediaQuery.of(context).size.width * */ 140.w,
               height: /* MediaQuery.of(context).size.height * 0.04.h */ 24.h,
               decoration: BoxDecoration(
                 color: AppColors.primary,

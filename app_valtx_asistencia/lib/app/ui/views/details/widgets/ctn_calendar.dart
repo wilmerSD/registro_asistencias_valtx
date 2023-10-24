@@ -1,7 +1,6 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -10,7 +9,7 @@ DateRangePickerController _controller = DateRangePickerController();
 DateTime now = DateTime.now();
 DateTime maxDate = now;
 DateTime minDate = DateTime(now.year, now.month, 1);
-final datePickerController = DateRangePickerController();
+String currentDate = '';
 
 class CtnCalendar extends StatelessWidget {
   const CtnCalendar({Key? key}) : super(key: key);
@@ -19,15 +18,13 @@ class CtnCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
       builder: (controller) => SfDateRangePicker(
-        headerHeight: 30.h,
+        view: DateRangePickerView.month,
         controller: _controller,
         enablePastDates: true,
-        selectionRadius: 20.w,
         showTodayButton: false,
-        selectionTextStyle: const TextStyle(
-          color: Colors.white,
-        ),
         allowViewNavigation: false,
+        showNavigationArrow: false,
+        selectionRadius: 20,
         maxDate: maxDate,
         //minDate: minDate,
         todayHighlightColor: AppColors.primary,
@@ -36,10 +33,11 @@ class CtnCalendar extends StatelessWidget {
             textStyle: TextStyle(
               color: AppColors.backgroundColor,
             )),
-        showNavigationArrow: false,
+        selectionTextStyle: const TextStyle(
+          color: Colors.white,
+        ),
         selectionShape: DateRangePickerSelectionShape.rectangle,
         selectionColor: AppColors.primary,
-        view: DateRangePickerView.month,
         monthViewSettings: const DateRangePickerMonthViewSettings(
           viewHeaderStyle: DateRangePickerViewHeaderStyle(
             textStyle: TextStyle(
@@ -49,12 +47,34 @@ class CtnCalendar extends StatelessWidget {
         ),
         onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
           DateTime? selectedDate = args.value;
-          String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
-          if (formattedDate != '') {
-            controller.getAssistancesMonthUser(formattedDate);
-            controller.assistancesDayUser(formattedDate);
-          }
+            currentDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
+            controller.detailsControllerDates(currentDate);
+            controller.assistancesDayUser(currentDate);
         },
+        onViewChanged: (DateRangePickerViewChangedArgs args) {
+          final newMonth = args.visibleDateRange.startDate;
+
+            //Espera que la vista se construya por completo para llamar a la funcióm
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+
+              currentDate = DateFormat('yyyy-MM-dd').format(newMonth!);
+              controller.formattedDateNow.value = DateFormat('yyyy-MM-dd').format(now);
+
+              String formattedDateMonth = DateFormat('yyyy-MM').format(now);
+              String formattedDateChanged = DateFormat('yyyy-MM').format(newMonth);
+
+              controller.getAssistancesMonthUser(currentDate);
+              controller.detailsControllerDates(currentDate);
+
+              if (formattedDateMonth == formattedDateChanged) {
+                 currentDate = DateFormat('yyyy-MM-dd').format(now);
+                 controller.detailsControllerDates(currentDate);
+                return controller.assistancesDayUser(controller.formattedDateNow.value);
+              }
+              controller.assistancesDayUser(currentDate);
+            }
+            );
+          }
       ),
     );
   }

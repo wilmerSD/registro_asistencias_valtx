@@ -14,7 +14,8 @@ import 'package:intl/intl.dart';
 class DetailsController extends GetxController {
   @override
   void onInit() async {
-    await detailsControllerDate();
+    await detailsControllerDate(selectedDate);
+    await detailsControllerDates(formattedDate);
     _typesValidationsuser();
     assistancesDayUser(formattedDate);
     getAssistancesMonthUser(formattedDate);
@@ -41,17 +42,38 @@ class DetailsController extends GetxController {
   var responseTypesValidations = <Datum>[].obs;
   var responseDataDia = <DatumDay>[].obs;
   var responseDataMes = <DatumMonth>[].obs;
-  var statusMessageDay = ''.obs;
-  var statusMessageMonth = ''.obs;
-  var date = ''.obs;
-  RxString messageError = RxString("");
+  var selectedDate = DateTime.now();
+  RxString statusMessageDay = ''.obs;
+  RxString statusMessageMonth = ''.obs;
+  RxString messageError = ''.obs;
+  RxString formattedDateNow  = ''.obs;
   RxBool isLoading = false.obs;
   RxBool isLoadingTypesValidation = false.obs;
   RxBool isVisible = false.obs;
-  DateTime? selectedDate;
-  String? formattedDate;
+  RxBool isVisibleDay = false.obs;
+  String formattedDate = '';
+  var fecha = DateTime.now();
+  RxString day = ''.obs;
+  String month = '';
+  RxInt montInt = 1.obs;
+  RxString age = ''.obs;
 
   //Funciones
+
+  //Formatear la hora
+  detailsControllerDate(selectedDates) {
+    formattedDate = DateFormat('yyyy-MM-dd').format(selectedDates);
+  }
+
+  //Convertir la hora
+  detailsControllerDates(String selectedDateFormat) {
+    final parts = selectedDateFormat.split('-'); 
+    age.value = parts[0];
+    month = parts[1];
+    montInt.value = int.parse(month);
+    day.value = parts[2]; 
+  }
+
   //Tipos de validacion
   void _typesValidationsuser() async {
     isLoadingTypesValidation.value = true;
@@ -66,13 +88,13 @@ class DetailsController extends GetxController {
   }
 
   //Asistencias del mes de usuario
-  void getAssistancesMonthUser(formattedDate) async {
+  void getAssistancesMonthUser(formattedDateToday) async {
     isLoading.value = true;
     String Iduser = await StorageService.get(Keys.kIdUser);
     final response =
         await _assistancesMonthkUserRepository.getAssistancesMonthDate(
       RequestAssistanceInformationModel(
-          idUser: int.parse(Iduser), date: formattedDate),
+          idUser: int.parse(Iduser), date: formattedDateToday),
     );
     isLoading.value = false;
     responseDataMes.assignAll(response.data ?? []);
@@ -83,26 +105,21 @@ class DetailsController extends GetxController {
     }
   }
 
-  //Formatear la hora
-  detailsControllerDate() {
-    selectedDate = DateTime.now();
-    formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
-  }
+  
 
   //Asistencias del dia de usuario
-  void assistancesDayUser(formattedDate) async {
-    isLoading.value = false;
+  void assistancesDayUser(formattedDateToday) async {
     try {
-      isLoading.value = true;
+      isVisibleDay.value = true;
       String Iduser = await StorageService.get(Keys.kIdUser);
       final response = await _assistancesDayUserRepository.getAssistancesDay(
         RequestAssistanceInformationModel(
           idUser: int.parse(Iduser),
-          date: formattedDate,
+          date: formattedDateToday,
         ),
       );
 
-      isLoading.value = false;
+      isVisibleDay.value = false;
       responseDataDia.assignAll(response.data ?? []);
       statusMessageDay.value = response.statusMessage;
       if (!response.success) {

@@ -307,7 +307,7 @@ class Helpers {
     }
   } 
   */
-  String getMonthName(int month) {
+  String getMonthName(RxInt month) {
     final monthNames = [
       'Enero',
       'Febrero',
@@ -323,7 +323,7 @@ class Helpers {
       'Diciembre'
     ];
     return monthNames[
-        month - 1]; // Restamos 1 porque los índices comienzan en 0
+        month.value - 1];
   }
 
   Color getCircleColor(int idValidacion) {
