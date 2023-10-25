@@ -15,17 +15,14 @@ class AppBarHome extends StatelessWidget {
     final helpers = Helpers();
     return GetBuilder<HomeController>(
       builder: (controller) => Container(
-        margin: EdgeInsets.symmetric(horizontal: kMarginApp.w, vertical: 40.h),
+        margin: EdgeInsets.symmetric(horizontal: kMarginApp.w, vertical: kMarginBigApp.h),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  height: 50.h,
-                  /* height: MediaQuery.of(context).size.height * 0.08, */
-                  //width: MediaQuery.of(context).size.width * 0.15,
-                  /* margin: const EdgeInsets.only(top: 40.0), */
+                  height: kSizeNormalLarge.h,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.backgroundColor,
@@ -50,18 +47,10 @@ class AppBarHome extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 50.h,
-                  //height: MediaQuery.of(context).size.height * 0.068,
-                  //width: MediaQuery.of(context).size.width * 0.68,
-                  padding: EdgeInsets.only(
-                    top: 8.0.h,
-                    bottom: 8.0.h,
-                    left: 20.0.h,
-                    right: 20.0.h,
-                  ),
-                  /* margin: const EdgeInsets.only(top: 40.0), */
+                  height: kSizeNormalLarge.h,
+                  padding: EdgeInsets.symmetric(horizontal: kPaddingAppLargeApp.w ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(kRadiusMedium.h),
                     color: AppColors.backgroundColor,
                     boxShadow: [
                       BoxShadow(
@@ -82,7 +71,7 @@ class AppBarHome extends StatelessWidget {
                             fontSize: 22,
                             fontWeight: FontWeight.w900),
                       ),
-                      SizedBox(width: 20.w),
+                      SizedBox(width: kSizeBigLittle.w),
                       Text(
                         textScaleFactor: 1.2,
                         helpers.getDateLarge(),

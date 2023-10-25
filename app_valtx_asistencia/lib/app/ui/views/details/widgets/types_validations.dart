@@ -1,4 +1,5 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -15,8 +16,8 @@ class TypesValidations extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
       builder: (controller) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0.w),
-        height: 60.h,
+        margin: EdgeInsets.symmetric(horizontal: kMarginLargeApp.w),
+        height: kSizeBigLarge.h,
         child: Obx(
           () => controller.isLoadingTypesValidation.value
               ? const Center(child: CircularProgressIndicator())
@@ -24,7 +25,7 @@ class TypesValidations extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.responseTypesValidations.length,
                   separatorBuilder: (context, index) {
-                    return SizedBox(width: 43.0.w);
+                    return SizedBox(width: kSizeBig.w);
                   },
                   itemBuilder: (context, index) {
                     final item = controller.responseTypesValidations[index];
@@ -34,10 +35,10 @@ class TypesValidations extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          radius: 10.h,
+                          radius: kRadiusSmall.h,
                           backgroundColor: circleColor,
                         ),
-                        SizedBox(height: 10.0.h),
+                        SizedBox(height: kSizeSmallLittle.h),
                         Text(
                           textScaleFactor: 1,
                           item.description,

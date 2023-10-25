@@ -4,6 +4,7 @@ import 'package:app_valtx_asistencia/app/ui/views/details/widgets/calendar.dart'
 import 'package:app_valtx_asistencia/app/ui/views/details/widgets/date_today.dart';
 import 'package:app_valtx_asistencia/app/ui/views/details/widgets/types_validations.dart';
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class DetailView extends StatelessWidget {
         builder: (controller) => Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
-                toolbarHeight: 50.h,
+                toolbarHeight: kSizeNormalLarge.h,
                 elevation: 0.18,
                 iconTheme: const IconThemeData(color: AppColors.primary),
                 backgroundColor: AppColors.backgroundColor,
@@ -36,22 +37,21 @@ class DetailView extends StatelessWidget {
                     children: [
                       //Calendario
                       const Calendar(),
+
                       //Tipos de validación
                       const TypesValidations(),
-                      /* SizedBox(
-                        height: 10.h,
-                      ), */
+
                       //Fecha de hoy
                       const DateToday(),
                       SizedBox(
-                        height: 25.h,
+                        height: kSizeExtraLittle.h,
                       ),
-                      //Marcaciones del dia
-                      const DetailsDay(),
 
-                      //faltas o tardanzas del mes
+                      //Marcaciones del dia
+                      const DetailsDay(),  
                     ],
                   ),
+                  //faltas o tardanzas del mes
                   const Positioned(
                     bottom: 0,
                     left: 0,

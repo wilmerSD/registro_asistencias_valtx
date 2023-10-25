@@ -14,13 +14,13 @@ class UserInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
         builder: (controller) => Container(
-            height: /* MediaQuery.of(context).size.height * 0.1.h, */ 78.h,
+            height:  kSizeBigTall.h,
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
+            margin: EdgeInsets.symmetric(horizontal: kMarginApp.w,),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(kRadiusMedium),
-                topLeft: Radius.circular(kRadiusMedium),
+                topRight: Radius.circular(kRadiusSmall),
+                topLeft: Radius.circular(kRadiusSmall),
               ),
               color: AppColors.backgroundColor,
               boxShadow: [
@@ -38,9 +38,9 @@ class UserInformation extends StatelessWidget {
                   : ListTile(
                       leading: CircleAvatar(
                         backgroundColor: AppColors.primary,
-                        radius: 50.h,
+                        radius: kRadiusLarge,
                         child: Icon(Icons.person,
-                            color: AppColors.backgroundColor, size: 30),
+                            color: AppColors.backgroundColor, size: kIconSize.h),
                       ),
                       title: Text(
                         textScaleFactor: 1,
@@ -54,9 +54,9 @@ class UserInformation extends StatelessWidget {
                           const Icon(
                             Iconsax.location,
                             color: AppColors.grayBlue,
-                            size: 18.0,
+                            size: kIconSizeSmall
                           ),
-                          SizedBox(width: 5.w),
+                          SizedBox(width: kSizeLittle.w),
                           Flexible(
                             child: Text(
                               textScaleFactor: 1,

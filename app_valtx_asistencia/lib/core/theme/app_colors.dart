@@ -23,7 +23,7 @@ class AppColors {
   static const Color degradedEnd = Color.fromARGB(255, 244, 129, 22);
   static const Color blueDark = Color.fromRGBO(38, 52, 113, 1);
   static const Color modalBarrier = Color.fromARGB(33, 87, 85, 85);
-  static const Color contentNotification = Color.fromARGB(57, 33, 149, 243);
+  static const Color contentNotification = Color.fromRGBO(247, 248, 253, 1);
   static const Color redLoading = Color.fromRGBO(230, 0, 0, 0.8);
   static const Color black = Color.fromRGBO(27, 21, 61, 1.0);
 

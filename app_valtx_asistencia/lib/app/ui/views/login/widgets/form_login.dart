@@ -22,11 +22,6 @@ class FormLogin extends GetView<LoginController> {
           textScaleFactor: 1,
           "Sistema de asistencia",
           style: AppTextStyle(context).bold26(color: AppColors.primary),
-          /* style: TextStyle(
-              color: AppColors.primary,
-              fontWeight: FontWeight.w700,
-              fontSize: 26,
-              fontFamily: 'Montserrat'), */
         ),
         SizedBox(height: 40.h),
         FieldForm(

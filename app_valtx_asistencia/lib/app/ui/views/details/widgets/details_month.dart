@@ -1,4 +1,5 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class DetailslMonth extends StatelessWidget {
                 ),
                 Container(
                   color: AppColors.backgroundColor,
-                  height: 88.h,
+                  height: kSizeExtraTall.h,
                   child: Obx(() {
                     return controller.isLoading.value
                         ? const Center(child: CircularProgressIndicator())
@@ -39,11 +40,11 @@ class DetailslMonth extends StatelessWidget {
                                     )),
                               )
                             : ListView.separated(
-                                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                                padding: EdgeInsets.symmetric(horizontal: kPaddingAppMediunApp.w),
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller.responseDataMes.length,
                                 separatorBuilder: (context, index) {
-                                  return SizedBox(width: 45.0.w);
+                                  return SizedBox(width: kSizeSmallBig.w);
                                 },
                                 itemBuilder: (context, index) {
                                   final itemMonth =

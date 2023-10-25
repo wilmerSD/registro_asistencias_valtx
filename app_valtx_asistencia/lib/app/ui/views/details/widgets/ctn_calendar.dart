@@ -1,8 +1,8 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 DateRangePickerController _controller = DateRangePickerController();
@@ -10,6 +10,7 @@ DateTime now = DateTime.now();
 DateTime maxDate = now;
 DateTime minDate = DateTime(now.year, now.month, 1);
 String currentDate = '';
+final helpers = Helpers();
 
 class CtnCalendar extends StatelessWidget {
   const CtnCalendar({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class CtnCalendar extends StatelessWidget {
           ),
           onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
             DateTime? selectedDate = args.value;
-            currentDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
+            currentDate = helpers.formatDateNormal(selectedDate!);
             controller.detailsControllerDates(currentDate);
             controller.assistancesDayUser(currentDate);
           },
@@ -55,19 +56,17 @@ class CtnCalendar extends StatelessWidget {
 
             //Espera que la vista se construya por completo para llamar a la funcióm
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              currentDate = DateFormat('yyyy-MM-dd').format(newMonth!);
-              controller.formattedDateNow.value =
-                  DateFormat('yyyy-MM-dd').format(now);
+              currentDate = helpers.formatDateNormal(newMonth!);
+              controller.formattedDateNow.value = helpers.formatDateNormal(now);
 
-              String formattedDateMonth = DateFormat('yyyy-MM').format(now);
-              String formattedDateChanged =
-                  DateFormat('yyyy-MM').format(newMonth);
+              String formattedDateMonth = helpers.formatDateShort(now);
+              String formattedDateChanged = helpers.formatDateShort(newMonth);
 
               controller.getAssistancesMonthUser(currentDate);
               controller.detailsControllerDates(currentDate);
-
+              //Cuando se vuelve al mes actual que tome la fecha del dia
               if (formattedDateMonth == formattedDateChanged) {
-                currentDate = DateFormat('yyyy-MM-dd').format(now);
+                currentDate = helpers.formatDateNormal(now);
                 controller.detailsControllerDates(currentDate);
                 return controller
                     .assistancesDayUser(controller.formattedDateNow.value);

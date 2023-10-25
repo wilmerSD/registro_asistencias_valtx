@@ -13,17 +13,16 @@ class BottomHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
         builder: (controller) => Container(
-              //height: MediaQuery.of(context).size.height * 0.11,
-              height: 57.h,
+              height: kSizeBigLarge.h,
               margin: EdgeInsets.only(
                 left: kMarginApp.w,
                 right: kMarginApp.w,
-                bottom: 20.0.h,
+                bottom: kMarginLargeApp.h,
               ),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(kRadiusMedium),
-                  bottomRight: Radius.circular(kRadiusMedium),
+                  bottomLeft: Radius.circular(kRadiusSmall),
+                  bottomRight: Radius.circular(kRadiusSmall),
                 ),
                 color: AppColors.backgroundColor,
                 boxShadow: [
@@ -38,14 +37,14 @@ class BottomHome extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 57.h,
+                    height: kSizeBigLarge.h,
                     child: Obx(
                       () {
                         return controller.isLoading.value
                             ? Center(
                                 child: SizedBox(
-                                    height: 30.0.h,
-                                    width: 30.0.w,
+                                    height: kSizeNormalMediun.h,
+                                    width: kSizeNormalMediun.w,
                                     child:
                                         CircularProgressIndicator(value: 1.h)))
                             : controller.responseUserAssistanceMonth.isEmpty
@@ -63,13 +62,11 @@ class BottomHome extends StatelessWidget {
                                     itemCount: controller
                                         .responseUserAssistanceMonth.length,
                                     separatorBuilder: (context, index) {
-                                      return SizedBox(width: 35.0.w);
+                                      return SizedBox(width: kSizeBigMediun.w);
                                     },
                                     itemBuilder: (context, index) {
                                       final itemMonth = controller
                                           .responseUserAssistanceMonth[index];
-                                      /* Color circleColor =
-                                      getCircleColor(itemMonth.idValidation ?? 0); */
                                       return Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

@@ -11,7 +11,6 @@ class SplashContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<SplashController>(
         builder: (controller) => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 35.0),
               decoration: const BoxDecoration(color: AppColors.light),
               child: Center(
                   child: Text('VALTX',

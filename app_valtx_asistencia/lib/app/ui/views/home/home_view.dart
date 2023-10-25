@@ -31,8 +31,8 @@ class HomeView extends StatelessWidget {
                 //Detalles
                 const AppBarHome(),
                 Expanded(
-                    child: Container(
-                  height: 398.h,
+                    child: SizedBox(
+                  height: kSizeLittle.h,  
                 )),
                 //Asistencias de la semana
                 const ContentWeekHome(),
@@ -45,12 +45,12 @@ class HomeView extends StatelessWidget {
                   color: AppColors.grayBlue,
                   width: double.infinity,
                   height: 1.0,
-                  margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
+                  margin: EdgeInsets.symmetric(horizontal: kMarginMediunApp.w),
                 ),
                 const BottomHome(),
                 //Para marcar asistencia
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: kMarginApp.w),
+                  padding: EdgeInsets.symmetric(horizontal: kMarginMediunApp.w),
                   child: BtnPrimaryInk(
                     text: controller.isLoading.value
                         ? "Verificando..."
@@ -60,15 +60,14 @@ class HomeView extends StatelessWidget {
                       /* -helpers.showTypesMarkingDialog(context, controller); */
                       Helpers.getShowModalBS(context,
                           title: 'Seleccionar tipo de marcación',
-                          content: ListTypeMark());
+                          content:const ListTypeMark());
                       controller.getCurrentLocation();
                       controller.getNameLocation();
                     },
                   ),
                 ),
-
                 SizedBox(
-                  height: 18.0.h,
+                  height: kSizeNormalLittle.h,
                 ),
               ],
             ),

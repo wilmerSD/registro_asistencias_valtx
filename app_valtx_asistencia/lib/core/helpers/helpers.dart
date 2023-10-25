@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_marcar_bad.dart';
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_marcar_ok.dart';
-import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
 import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -306,6 +303,55 @@ class Helpers {
       await launchUrl(Uri.parse(url), mode: LaunchMode.platformDefault);
     }
   } 
+  void showTypesMarkingDialog(BuildContext context, HomeController controller) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Theme(
+            data: ThemeData(
+              dialogBackgroundColor: AppColors.backgroundColor,
+            ),
+            child: controller.isLoading.value
+                ? const Center(child: CircularProgressIndicator())
+                : controller.responseTypesMarking.isEmpty
+                    ? Center(
+                        child: Text('${controller.statusMessageTypesMarking}'),
+                      )
+                    : AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        backgroundColor: AppColors.backgroundColor,
+                        title: const Text('Seleccionar tipo de marcación'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: controller.responseTypesMarking.map((type) {
+                            return ListTile(
+                              title: Text(type.description),
+                              onTap: () {
+                                Navigator.pop(context, type.idTypesMarking);
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ));
+      },
+    ).then((selectedValue) {
+      if (selectedValue != null) {
+        controller.assistMarker(selectedValue);
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return Obx(() => controller.isLoading.value
+                ? const Center(child: CircularProgressIndicator())
+                : controller.statusAssistance.value
+                    ? const AlertRegisterGood()
+                    : const AlertRegisterBad());
+          },
+        );
+      }
+    });
+  } 
   */
   String getMonthName(RxInt month) {
     final monthNames = [
@@ -367,57 +413,15 @@ class Helpers {
     final format = DateFormat('EEEE dd \'de\' MMM.', 'es');
     return format.format(now);
   }
-
-  void showTypesMarkingDialog(BuildContext context, HomeController controller) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Theme(
-            data: ThemeData(
-              dialogBackgroundColor: AppColors.backgroundColor,
-            ),
-            child: controller.isLoading.value
-                ? const Center(child: CircularProgressIndicator())
-                : controller.responseTypesMarking.isEmpty
-                    ? Center(
-                        child: Text('${controller.statusMessageTypesMarking}'),
-                      )
-                    : AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        backgroundColor: AppColors.backgroundColor,
-                        title: const Text('Seleccionar tipo de marcación'),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: controller.responseTypesMarking.map((type) {
-                            return ListTile(
-                              title: Text(type.description),
-                              onTap: () {
-                                Navigator.pop(context, type.idTypesMarking);
-                              },
-                            );
-                          }).toList(),
-                        ),
-                      ));
-      },
-    ).then((selectedValue) {
-      if (selectedValue != null) {
-        controller.assistMarker(selectedValue);
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return Obx(() => controller.isLoading.value
-                ? const Center(child: CircularProgressIndicator())
-                : controller.statusAssistance.value
-                    ? const AltMarcarOk()
-                    : const AltMarcarBad());
-          },
-        );
-      }
-    });
+  
+  String formatDateNormal(DateTime fecha) {
+    final DateFormat formato = DateFormat('yyyy-MM-dd');
+    return formato.format(fecha);
   }
-
+  String formatDateShort(DateTime fecha) {
+    final DateFormat formato = DateFormat('yyyy-MM');
+    return formato.format(fecha);
+  }
   static void showSnackBar(
     BuildContext context, {
     required String title,

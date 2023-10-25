@@ -43,20 +43,20 @@ class DetailsController extends GetxController {
   var responseDataDia = <DatumDay>[].obs;
   var responseDataMes = <DatumMonth>[].obs;
   var selectedDate = DateTime.now();
+  var fecha = DateTime.now();
   RxString statusMessageDay = ''.obs;
   RxString statusMessageMonth = ''.obs;
   RxString messageError = ''.obs;
   RxString formattedDateNow  = ''.obs;
+  RxString day = ''.obs;
+  RxInt montInt = 1.obs;
+  RxString age = ''.obs;
+  String month = '';
+  String formattedDate = '';
   RxBool isLoading = false.obs;
   RxBool isLoadingTypesValidation = false.obs;
   RxBool isVisible = false.obs;
   RxBool isVisibleDay = false.obs;
-  String formattedDate = '';
-  var fecha = DateTime.now();
-  RxString day = ''.obs;
-  String month = '';
-  RxInt montInt = 1.obs;
-  RxString age = ''.obs;
 
   //Funciones
 
@@ -104,8 +104,6 @@ class DetailsController extends GetxController {
       return;
     }
   }
-
-  
 
   //Asistencias del dia de usuario
   void assistancesDayUser(formattedDateToday) async {

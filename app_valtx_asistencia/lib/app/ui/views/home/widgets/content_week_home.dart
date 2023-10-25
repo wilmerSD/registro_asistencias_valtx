@@ -17,7 +17,7 @@ class ContentWeekHome extends StatelessWidget {
     final helpers = Helpers();
     return GetBuilder<HomeController>(
       builder: (controller) => Container(
-        height: 76.h,
+        height: kSizeNormalTall.h,
         margin: EdgeInsets.symmetric(horizontal: kMarginApp.w),
         decoration: BoxDecoration(
           boxShadow: [
@@ -34,11 +34,11 @@ class ContentWeekHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(top: 8.h, right: 15.w, left: 15.w),
+              padding: EdgeInsets.only(top: kPaddingAppSmallApp.h, right: kPaddingAppMediunApp.w, left: kPaddingAppMediunApp.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10.0.w),
-                  topLeft: Radius.circular(10.0.w),
+                  topRight: Radius.circular(kRadiusSmall.w),
+                  topLeft: Radius.circular(kRadiusSmall.w),
                 ),
                 color: AppColors.backgroundColor,
               ),
@@ -48,9 +48,7 @@ class ContentWeekHome extends StatelessWidget {
                   const Text(
                     textScaleFactor: 1,
                     'Mis marcaciones recientes',
-                    style: /* AppTextStyle(context).bold14(
-                      color: AppColors.primary,
-                    ), */
+                    style:
                         TextStyle(
                             color: AppColors.primary,
                             fontWeight: FontWeight.w600,
@@ -68,12 +66,12 @@ class ContentWeekHome extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              height: 43.h,
+              padding: EdgeInsets.symmetric(horizontal: kPaddingAppNormalApp.w),
+              height: kSizeBig.h,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(kRadiusMedium),
-                  bottomRight: Radius.circular(kRadiusMedium),
+                  bottomLeft: Radius.circular(kRadiusSmall),
+                  bottomRight: Radius.circular(kRadiusSmall),
                 ),
                 color: AppColors.backgroundColor,
               ),
@@ -82,8 +80,8 @@ class ContentWeekHome extends StatelessWidget {
                   return controller.isLoading.value
                       ? Center(
                           child: SizedBox(
-                              height: 20.0.h,
-                              width: 20.0.w,
+                              height: kSizeMediun.h,
+                              width: kSizeMediun.w,
                               child: CircularProgressIndicator(value: 1.h)))
                       : controller.responseUserAssistanceWeek.isEmpty
                           ? Center(
@@ -97,7 +95,7 @@ class ContentWeekHome extends StatelessWidget {
                               itemCount:
                                   controller.responseUserAssistanceWeek.length,
                               separatorBuilder: (context, index) {
-                                return SizedBox(width: 33.0.w);
+                                return SizedBox(width:kSizeMediun.w);
                               },
                               itemBuilder: (context, index) {
                                 final item = controller
@@ -108,7 +106,7 @@ class ContentWeekHome extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     CircleAvatar(
-                                        radius: 10.h,
+                                        radius: kRadiusSmall.h,
                                         backgroundColor: circleColor,
                                       ),
                                     SizedBox(height: 1.h),

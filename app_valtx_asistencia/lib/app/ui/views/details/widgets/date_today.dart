@@ -1,4 +1,5 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -14,9 +15,9 @@ class DateToday extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(builder: (controller) {
       return Obx(() => Container(
-          margin: EdgeInsets.symmetric(horizontal: 20.w),
+          margin: EdgeInsets.symmetric(horizontal: kMarginLargeApp.w),
           width: double.infinity,
-          height: 30.0.h,
+          height: kSizeNormalMediun.h,
           child: Text(
             textScaleFactor: 1.2,
             '${controller.day} ${helpers.getMonthName(controller.montInt)} ${controller.age}',

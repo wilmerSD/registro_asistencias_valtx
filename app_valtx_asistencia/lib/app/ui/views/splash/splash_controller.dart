@@ -4,7 +4,6 @@ import 'package:app_valtx_asistencia/app/repositories/authentication_repository.
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/helpers/keys.dart';
 import 'package:app_valtx_asistencia/routes/app_routes_name.dart';
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -28,12 +27,11 @@ class SplashController extends GetxController {
   //Instance
   final _authenticationRepository = Get.find<AuthenticationRepository>();
 
-  //Variable
+  //Variables
   String userName = "";
   String password = "";
   RxBool isLoading = false.obs;
-  RxBool isVisible = false.obs;
-  RxString messageError = RxString("");
+  RxBool isVisible = false.obs; 
 
   //Functions
 

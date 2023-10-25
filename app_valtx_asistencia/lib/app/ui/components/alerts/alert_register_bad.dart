@@ -1,12 +1,14 @@
 import 'package:app_valtx_asistencia/app/ui/components/alert_dialog_component.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AltMarcarBad extends StatelessWidget {
-  const AltMarcarBad({Key? key}) : super(key: key);
+class AlertRegisterBad extends StatelessWidget {
+  const AlertRegisterBad({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,7 @@ class AltMarcarBad extends StatelessWidget {
       builder: (controller) => Obx(
         () {
           return AlertDialogComponent(
+            title: "Información sobre el registro",
             headerTitle: "Información",
             onTapButton: () {
               Get.back();
@@ -31,7 +34,7 @@ class AltMarcarBad extends StatelessWidget {
                     color: AppColors.primary,
                   ),
                 ),
-                const SizedBox(height: 10.0,),
+                SizedBox(height: kSizeSmallLittle.h),
                 Text('De tener algún inconveniente comuníquese con su Líder Técnico.',
                     textScaleFactor: 1,
                     textAlign: TextAlign.center,

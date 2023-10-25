@@ -25,7 +25,7 @@ class ContentTitle extends StatelessWidget {
     return Container(
       color: Colors.transparent,
       margin: margin,
-      padding: const EdgeInsets.symmetric(horizontal: kMarginApp),
+      padding: const EdgeInsets.symmetric(horizontal: kMarginMediunApp),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

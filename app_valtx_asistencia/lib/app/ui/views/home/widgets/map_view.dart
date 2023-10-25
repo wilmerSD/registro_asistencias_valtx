@@ -28,6 +28,7 @@ class MapView extends StatelessWidget {
             ),
           );
           return GoogleMap(
+            zoomControlsEnabled: false,
             mapType: MapType.normal,
             myLocationEnabled: false,
             indoorViewEnabled: true,
@@ -52,9 +53,9 @@ class MapView extends StatelessWidget {
             },
             circles: {
               Circle(
-                circleId: CircleId("circuloLugarEspecifico"),
+                circleId:const CircleId("circuloLugarEspecifico"),
                 center: controller.workPosition,
-                radius: 100,
+                radius: 50,
                 fillColor: AppColors.radiusMap,
                 strokeColor: AppColors.primary,
                 strokeWidth: 2,

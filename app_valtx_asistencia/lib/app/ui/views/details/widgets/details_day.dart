@@ -1,4 +1,5 @@
 import 'package:app_valtx_asistencia/app/ui/views/details/details_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/helpers/helpers.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -15,8 +16,8 @@ class DetailsDay extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
         builder: (controller) => Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0.w),
-              height: 230.h,
+              margin: EdgeInsets.symmetric(horizontal: kMarginLargeApp.w),
+              height: kSizeSmallAmple.h,
               child: Obx(() {
                 return controller.isVisibleDay.value
                     ? const Center(child: CircularProgressIndicator())
@@ -28,10 +29,10 @@ class DetailsDay extends StatelessWidget {
                                 )),
                           )
                         : ListView.separated(
-                            padding: EdgeInsets.only(bottom: 75.h),
+                            padding: EdgeInsets.only(bottom: kRadiusAmple.h),
                             itemCount: controller.responseDataDia.length,
                             separatorBuilder: (context, index) {
-                              return SizedBox(height: 15.0.h);
+                              return SizedBox(height: kSize.h);
                             },
                             itemBuilder: (context, index) {
                               final itemDay = controller.responseDataDia[index];
@@ -45,7 +46,7 @@ class DetailsDay extends StatelessWidget {
                                         radius: 10.h,
                                         backgroundColor: circleColordia,
                                       ),
-                                      SizedBox(width: 15.0.w),
+                                      SizedBox(width: kSize.w),
                                       Text(
                                         textScaleFactor: 1,
                                         itemDay.time ?? '',
@@ -55,7 +56,7 @@ class DetailsDay extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 20.0.w),
+                                  SizedBox(width: kSizeBigLittle.w),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,

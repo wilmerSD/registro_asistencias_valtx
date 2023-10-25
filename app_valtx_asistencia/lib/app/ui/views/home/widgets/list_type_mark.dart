@@ -1,5 +1,5 @@
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_marcar_bad.dart';
-import 'package:app_valtx_asistencia/app/ui/components/alerts/alt_marcar_ok.dart';
+import 'package:app_valtx_asistencia/app/ui/components/alerts/alert_register_bad.dart';
+import 'package:app_valtx_asistencia/app/ui/components/alerts/alert_register_good.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
@@ -19,8 +19,8 @@ class ListTypeMark extends StatelessWidget {
         return Obx(() => controller.isLoading.value
             ? const Center(child: CircularProgressIndicator())
             : controller.statusAssistance.value
-                ? const AltMarcarOk()
-                : const AltMarcarBad());
+                ? const AlertRegisterGood()
+                : const AlertRegisterBad());
       },
     );
   }

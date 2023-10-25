@@ -1,12 +1,14 @@
 import 'package:app_valtx_asistencia/app/ui/components/alert_dialog_component.dart';
 import 'package:app_valtx_asistencia/app/ui/views/home/home_controller.dart';
+import 'package:app_valtx_asistencia/core/helpers/constant.dart';
 import 'package:app_valtx_asistencia/core/theme/app_colors.dart';
 import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AltMarcarOk extends StatelessWidget {
-  const AltMarcarOk({Key? key}) : super(key: key);
+class AlertRegisterGood extends StatelessWidget {
+  const AlertRegisterGood({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class AltMarcarOk extends StatelessWidget {
               String? registradoComo = item.value.registradoComo;
               String? detail = item.value.detalle;
               return AlertDialogComponent(
+                title: "Información sobre el registro",
                 headerTitle: "Información",
                 content: controller.statusMessageUserAssistance.value,
                 onTapButton: () {
@@ -30,8 +33,8 @@ class AltMarcarOk extends StatelessWidget {
                         style: AppTextStyle(context).bold16(
                           color: AppColors.primary,
                         )),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height:  kSizeSmallLittle.h,
                     ),
                     Text(
                       detail ?? '',

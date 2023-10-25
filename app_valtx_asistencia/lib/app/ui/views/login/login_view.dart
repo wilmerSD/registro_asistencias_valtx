@@ -7,6 +7,7 @@ import 'package:app_valtx_asistencia/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -42,8 +43,7 @@ class LoginView extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: kMarginLargeApp),
                   width: double.infinity,
-                  height: /* MediaQuery.of(context).size.height * 0.50, */
-                      489.h,
+                  height: kSizeNormalAmple.h,
                   decoration: const BoxDecoration(
                     color: AppColors.backgroundColor,
                     borderRadius: BorderRadius.only(
@@ -64,6 +64,55 @@ class LoginView extends StatelessWidget {
                           onTap: () => controller.validateForm(context),
                         ),
                       ),
+                      Expanded(child: Container()),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Stack(
+                                children: [
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: AppColors.contentNotification,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: kMarginLittleApp.w,
+                                        vertical: kMarginLittleApp.h),
+                                    height: kSizeBigLittle.h,
+                                    width: kSizeBigLittle.h,
+                                    child: Image.asset('assets/whatsapp.png'),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: kSizeLittle.h,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  controller.launchWhatsApp();
+                                },
+                                child: const Text(
+                                  '¿Necesitas ayuda?',
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Text("versión: 1.0.0 ")
+                        ],
+                      ),
+                      SizedBox(
+                        height: kSizeSmallLittle.h,
+                      )
                     ],
                   ),
                 ),
