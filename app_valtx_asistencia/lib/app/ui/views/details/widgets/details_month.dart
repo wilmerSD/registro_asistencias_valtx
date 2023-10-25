@@ -25,12 +25,9 @@ class DetailslMonth extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Divider(
+                Container(
                   color: AppColors.backgroundColor,
-                  height: 3.0,
-                ),
-                SizedBox(
-                  height: /* MediaQuery.of(context).size.height * 0.1, */ 88.h,
+                  height: 88.h,
                   child: Obx(() {
                     return controller.isLoading.value
                         ? const Center(child: CircularProgressIndicator())
@@ -46,7 +43,7 @@ class DetailslMonth extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller.responseDataMes.length,
                                 separatorBuilder: (context, index) {
-                                  return SizedBox(width: 40.0.w);
+                                  return SizedBox(width: 45.0.w);
                                 },
                                 itemBuilder: (context, index) {
                                   final itemMonth =
@@ -60,7 +57,6 @@ class DetailslMonth extends StatelessWidget {
                                         style: AppTextStyle(context).extra20(
                                           color: AppColors.primary,
                                         ),
-
                                       ),
                                       Text(
                                         textScaleFactor: 1,

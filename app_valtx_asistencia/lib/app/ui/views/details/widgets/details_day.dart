@@ -16,7 +16,7 @@ class DetailsDay extends StatelessWidget {
     return GetBuilder<DetailsController>(
         builder: (controller) => Container(
               margin: EdgeInsets.symmetric(horizontal: 20.0.w),
-              height: 240.h,
+              height: 230.h,
               child: Obx(() {
                 return controller.isVisibleDay.value
                     ? const Center(child: CircularProgressIndicator())
@@ -28,9 +28,10 @@ class DetailsDay extends StatelessWidget {
                                 )),
                           )
                         : ListView.separated(
+                            padding: EdgeInsets.only(bottom: 75.h),
                             itemCount: controller.responseDataDia.length,
                             separatorBuilder: (context, index) {
-                              return SizedBox(height: 20.0.h);
+                              return SizedBox(height: 15.0.h);
                             },
                             itemBuilder: (context, index) {
                               final itemDay = controller.responseDataDia[index];

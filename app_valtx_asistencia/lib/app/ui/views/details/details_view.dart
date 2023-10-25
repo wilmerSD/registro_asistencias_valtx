@@ -19,8 +19,7 @@ class DetailView extends StatelessWidget {
         builder: (controller) => Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
-                toolbarHeight: /* MediaQuery.of(context).size.height * 0.08, */
-                    70.h,
+                toolbarHeight: 50.h,
                 elevation: 0.18,
                 iconTheme: const IconThemeData(color: AppColors.primary),
                 backgroundColor: AppColors.backgroundColor,
@@ -31,26 +30,36 @@ class DetailView extends StatelessWidget {
                   ),
                 ),
               ),
-              body: const Stack(children: [
-                Column(
-                  /*  mainAxisAlignment: MainAxisAlignment.spaceAround, */
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    //Calendario
-                    Calendar(),
-                    //Tipos de validación
-                    TypesValidations(),
-                    SizedBox(height: 10,),
-                    //Fecha de hoy
-                    DateToday(),
-                    SizedBox(height: 20,),
-                    //Marcaciones del dia
-                    DetailsDay(),
-                    //faltas o tardanzas del mes
-                    DetailslMonth(),
-                  ],
-                ),
-              ]),
+              body: Stack(
+                children: [
+                  Column(
+                    children: [
+                      //Calendario
+                      const Calendar(),
+                      //Tipos de validación
+                      const TypesValidations(),
+                      /* SizedBox(
+                        height: 10.h,
+                      ), */
+                      //Fecha de hoy
+                      const DateToday(),
+                      SizedBox(
+                        height: 25.h,
+                      ),
+                      //Marcaciones del dia
+                      const DetailsDay(),
+
+                      //faltas o tardanzas del mes
+                    ],
+                  ),
+                  const Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: DetailslMonth(),
+                  ),
+                ],
+              ),
             ));
   }
 }

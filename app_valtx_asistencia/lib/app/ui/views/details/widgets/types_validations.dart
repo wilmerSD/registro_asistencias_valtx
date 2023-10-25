@@ -16,7 +16,7 @@ class TypesValidations extends StatelessWidget {
     return GetBuilder<DetailsController>(
       builder: (controller) => Container(
         margin: EdgeInsets.symmetric(horizontal: 20.0.w),
-        height: /* MediaQuery.of(context).size.height * 0.09.h */ 50.h,
+        height: 60.h,
         child: Obx(
           () => controller.isLoadingTypesValidation.value
               ? const Center(child: CircularProgressIndicator())
@@ -24,7 +24,7 @@ class TypesValidations extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.responseTypesValidations.length,
                   separatorBuilder: (context, index) {
-                    return SizedBox(width: 45.0.w);
+                    return SizedBox(width: 43.0.w);
                   },
                   itemBuilder: (context, index) {
                     final item = controller.responseTypesValidations[index];
@@ -35,7 +35,7 @@ class TypesValidations extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 10.h,
-                           backgroundColor: circleColor,
+                          backgroundColor: circleColor,
                         ),
                         SizedBox(height: 10.0.h),
                         Text(

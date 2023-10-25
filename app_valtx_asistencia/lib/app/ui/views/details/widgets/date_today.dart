@@ -16,7 +16,7 @@ class DateToday extends StatelessWidget {
       return Obx(() => Container(
           margin: EdgeInsets.symmetric(horizontal: 20.w),
           width: double.infinity,
-          height: 25.0.h,
+          height: 30.0.h,
           child: Text(
             textScaleFactor: 1.2,
             '${controller.day} ${helpers.getMonthName(controller.montInt)} ${controller.age}',

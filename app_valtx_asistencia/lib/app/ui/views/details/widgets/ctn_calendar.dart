@@ -18,63 +18,63 @@ class CtnCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DetailsController>(
       builder: (controller) => SfDateRangePicker(
-        view: DateRangePickerView.month,
-        controller: _controller,
-        enablePastDates: true,
-        showTodayButton: false,
-        allowViewNavigation: false,
-        showNavigationArrow: false,
-        maxDate: maxDate,
-        //minDate: minDate,
-        todayHighlightColor: AppColors.primary,
-        headerStyle: const DateRangePickerHeaderStyle(
-            textAlign: TextAlign.center,
-            textStyle: TextStyle(
-              color: AppColors.backgroundColor,
-            )),
-        selectionTextStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        selectionShape: DateRangePickerSelectionShape.rectangle,
-        selectionColor: AppColors.primary,
-        monthViewSettings: const DateRangePickerMonthViewSettings(
-          viewHeaderStyle: DateRangePickerViewHeaderStyle(
-            textStyle: TextStyle(
-              color: AppColors.grayBlue,
+          view: DateRangePickerView.month,
+          controller: _controller,
+          enablePastDates: true,
+          showTodayButton: false,
+          allowViewNavigation: false,
+          showNavigationArrow: false,
+          maxDate: maxDate,
+          //minDate: minDate,
+          todayHighlightColor: AppColors.primary,
+          headerStyle: const DateRangePickerHeaderStyle(
+              textAlign: TextAlign.center,
+              textStyle: TextStyle(
+                color: AppColors.backgroundColor,
+              )),
+          selectionTextStyle: const TextStyle(
+            color: Colors.white,
+          ),
+          selectionShape: DateRangePickerSelectionShape.rectangle,
+          selectionColor: AppColors.primary,
+          monthViewSettings: const DateRangePickerMonthViewSettings(
+            viewHeaderStyle: DateRangePickerViewHeaderStyle(
+              textStyle: TextStyle(
+                color: AppColors.grayBlue,
+              ),
             ),
           ),
-        ),
-        onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
-          DateTime? selectedDate = args.value;
+          onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+            DateTime? selectedDate = args.value;
             currentDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
             controller.detailsControllerDates(currentDate);
             controller.assistancesDayUser(currentDate);
-        },
-        onViewChanged: (DateRangePickerViewChangedArgs args) {
-          final newMonth = args.visibleDateRange.startDate;
+          },
+          onViewChanged: (DateRangePickerViewChangedArgs args) {
+            final newMonth = args.visibleDateRange.startDate;
 
             //Espera que la vista se construya por completo para llamar a la funcióm
             WidgetsBinding.instance.addPostFrameCallback((_) {
-
               currentDate = DateFormat('yyyy-MM-dd').format(newMonth!);
-              controller.formattedDateNow.value = DateFormat('yyyy-MM-dd').format(now);
+              controller.formattedDateNow.value =
+                  DateFormat('yyyy-MM-dd').format(now);
 
               String formattedDateMonth = DateFormat('yyyy-MM').format(now);
-              String formattedDateChanged = DateFormat('yyyy-MM').format(newMonth);
+              String formattedDateChanged =
+                  DateFormat('yyyy-MM').format(newMonth);
 
               controller.getAssistancesMonthUser(currentDate);
               controller.detailsControllerDates(currentDate);
 
               if (formattedDateMonth == formattedDateChanged) {
-                 currentDate = DateFormat('yyyy-MM-dd').format(now);
-                 controller.detailsControllerDates(currentDate);
-                return controller.assistancesDayUser(controller.formattedDateNow.value);
+                currentDate = DateFormat('yyyy-MM-dd').format(now);
+                controller.detailsControllerDates(currentDate);
+                return controller
+                    .assistancesDayUser(controller.formattedDateNow.value);
               }
               controller.assistancesDayUser(currentDate);
-            }
-            );
-          }
-      ),
+            });
+          }),
     );
   }
 }
