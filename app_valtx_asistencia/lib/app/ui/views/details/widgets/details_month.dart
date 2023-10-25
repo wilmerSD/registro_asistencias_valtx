@@ -40,7 +40,8 @@ class DetailslMonth extends StatelessWidget {
                                     )),
                               )
                             : ListView.separated(
-                                padding: EdgeInsets.symmetric(horizontal: kPaddingAppMediunApp.w),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: kPaddingAppMediunApp.w),
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller.responseDataMes.length,
                                 separatorBuilder: (context, index) {

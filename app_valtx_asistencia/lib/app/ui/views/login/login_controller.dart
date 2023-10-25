@@ -6,8 +6,7 @@ import 'package:app_valtx_asistencia/core/helpers/keys.dart';
 import 'package:app_valtx_asistencia/routes/app_routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+/* import 'package:url_launcher/url_launcher.dart'; */
 
 class LoginController extends GetxController {
   @override
@@ -104,7 +103,7 @@ class LoginController extends GetxController {
     }
   }
 
-  launchWhatsApp() async {
+  /* launchWhatsApp() async {
     final Uri url = Uri.parse('https://wa.me/949238476');
     try{
       if (await canLaunchUrl (url)) {
@@ -116,5 +115,5 @@ class LoginController extends GetxController {
       print("No se pudo conectar a whatsaap");
     }
     
-  }
+  } */
 }

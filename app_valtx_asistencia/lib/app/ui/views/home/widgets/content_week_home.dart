@@ -34,7 +34,10 @@ class ContentWeekHome extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(top: kPaddingAppSmallApp.h, right: kPaddingAppMediunApp.w, left: kPaddingAppMediunApp.w),
+              padding: EdgeInsets.only(
+                  top: kPaddingAppSmallApp.h,
+                  right: kPaddingAppMediunApp.w,
+                  left: kPaddingAppMediunApp.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(kRadiusSmall.w),
@@ -45,15 +48,12 @@ class ContentWeekHome extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     textScaleFactor: 1,
                     'Mis marcaciones recientes',
-                    style:
-                        TextStyle(
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            fontFamily: 'Montserrat'),
+                    style: AppTextStyle(context).bold14(
+                      color: AppColors.primary,
+                    ),
                   ),
                   Text(
                     textScaleFactor: 1,
@@ -95,7 +95,7 @@ class ContentWeekHome extends StatelessWidget {
                               itemCount:
                                   controller.responseUserAssistanceWeek.length,
                               separatorBuilder: (context, index) {
-                                return SizedBox(width:kSizeMediun.w);
+                                return SizedBox(width: kSizeMediun.w);
                               },
                               itemBuilder: (context, index) {
                                 final item = controller
@@ -106,9 +106,9 @@ class ContentWeekHome extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     CircleAvatar(
-                                        radius: kRadiusSmall.h,
-                                        backgroundColor: circleColor,
-                                      ),
+                                      radius: kRadiusSmall.h,
+                                      backgroundColor: circleColor,
+                                    ),
                                     SizedBox(height: 1.h),
                                     Text(
                                       textScaleFactor: 1,

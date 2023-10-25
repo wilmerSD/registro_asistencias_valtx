@@ -3,8 +3,9 @@ const kApiKey = "NPTx1LIEjVFe4dX2SlGAcB5hUVmloD8hxC0VYWVd";
 
 /// Usa [kSize]para definir el Size de: buttons, cards, containers, etc.
 const kSize = 15.0;
-const kSizeNormalAmple = 489.0;
-const kSizeSmallAmple = 300.0;
+const kSizeBigAmple = 489.0;
+const kSizeNormalAmple = 290.0;
+const kSizeSmallAmple = 230.0;
 const kSizeAmple = 140.0;
 const kSizeExtraTall = 88.0;
 const kSizeBigTall = 78.0;
@@ -29,18 +30,17 @@ const kMarginBigApp = 40.0;
 const kMarginLargeApp = 20.0;
 const kMarginMediunApp = 15.0;
 const kMarginNormalApp = 10.0;
-const kMarginSmallApp = 8.0;
+const kMarginSmallApp = 9.0;
 const kMarginLittleApp = 5.0;
 
 /// Usa [kPaddingApp] para definir el padding de la app
 const kPaddingApp = 15.0;
-const kPaddingAppBigApp = 40.0;
+const kPaddingAppBigApp = 90.0;
 const kPaddingAppLargeApp = 20.0;
 const kPaddingAppMediunApp = 15.0;
 const kPaddingAppNormalApp = 10.0;
 const kPaddingAppSmallApp = 8.0;
 const kPaddingAppLittleApp = 5.0;
-
 
 /// Usa [kRadius] para definir el BorderRadius de: buttons, cards, containers, etc.
 const kRadiusAmple = 75.0;

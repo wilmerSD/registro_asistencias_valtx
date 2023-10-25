@@ -15,7 +15,8 @@ class AppBarHome extends StatelessWidget {
     final helpers = Helpers();
     return GetBuilder<HomeController>(
       builder: (controller) => Container(
-        margin: EdgeInsets.symmetric(horizontal: kMarginApp.w, vertical: kMarginBigApp.h),
+        margin: EdgeInsets.symmetric(
+            horizontal: kMarginApp.w, vertical: kMarginBigApp.h),
         child: Column(
           children: [
             Row(
@@ -48,7 +49,8 @@ class AppBarHome extends StatelessWidget {
                 ),
                 Container(
                   height: kSizeNormalLarge.h,
-                  padding: EdgeInsets.symmetric(horizontal: kPaddingAppLargeApp.w ),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: kPaddingAppLargeApp.w),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(kRadiusMedium.h),
                     color: AppColors.backgroundColor,
@@ -63,13 +65,15 @@ class AppBarHome extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Text(
+                      Text(
                         textScaleFactor: 1,
                         'Valtx',
-                        style: TextStyle(
+                        style: /* TextStyle(
                             color: AppColors.primary,
                             fontSize: 22,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w900), */
+                            AppTextStyle(context)
+                                .extra22(color: AppColors.primary),
                       ),
                       SizedBox(width: kSizeBigLittle.w),
                       Text(

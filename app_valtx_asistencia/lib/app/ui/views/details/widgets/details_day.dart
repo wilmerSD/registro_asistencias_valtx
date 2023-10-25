@@ -20,7 +20,11 @@ class DetailsDay extends StatelessWidget {
               height: kSizeSmallAmple.h,
               child: Obx(() {
                 return controller.isVisibleDay.value
-                    ? const Center(child: CircularProgressIndicator())
+                    ? Center(
+                        child: SizedBox(
+                            height: kSizeMediun.h,
+                            width: kSizeMediun.w,
+                            child: CircularProgressIndicator(value: 1.h)))
                     : controller.responseDataDia.isEmpty
                         ? Center(
                             child: Text('${controller.statusMessageDay}',
@@ -29,7 +33,8 @@ class DetailsDay extends StatelessWidget {
                                 )),
                           )
                         : ListView.separated(
-                            padding: EdgeInsets.only(bottom: kRadiusAmple.h),
+                            padding:
+                                EdgeInsets.only(bottom: kPaddingAppBigApp.h),
                             itemCount: controller.responseDataDia.length,
                             separatorBuilder: (context, index) {
                               return SizedBox(height: kSize.h);

@@ -40,7 +40,9 @@ class DetailView extends StatelessWidget {
 
                       //Tipos de validación
                       const TypesValidations(),
-
+                      SizedBox(
+                        height: kSizeBigLittle.h,
+                      ),
                       //Fecha de hoy
                       const DateToday(),
                       SizedBox(
@@ -48,7 +50,7 @@ class DetailView extends StatelessWidget {
                       ),
 
                       //Marcaciones del dia
-                      const DetailsDay(),  
+                      const DetailsDay(),
                     ],
                   ),
                   //faltas o tardanzas del mes

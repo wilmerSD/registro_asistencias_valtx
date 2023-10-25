@@ -69,11 +69,9 @@ class FieldForm extends StatelessWidget {
         suffixIconColor: AppColors.primary,
         floatingLabelStyle: AppTextStyle(context).medium14(
           color: AppColors.grayBlue,
-          size: 14.0,
         ),
         labelStyle: AppTextStyle(context).medium14(
           color: AppColors.grayBlue,
-          size: 14.0,
         ),
         hintText: hintText,
         hintStyle: AppTextStyle(context).medium14(

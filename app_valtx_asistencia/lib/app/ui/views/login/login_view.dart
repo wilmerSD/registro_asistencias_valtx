@@ -43,7 +43,7 @@ class LoginView extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: kMarginLargeApp),
                   width: double.infinity,
-                  height: kSizeNormalAmple.h,
+                  height: kSizeBigAmple.h,
                   decoration: const BoxDecoration(
                     color: AppColors.backgroundColor,
                     borderRadius: BorderRadius.only(
@@ -64,7 +64,7 @@ class LoginView extends StatelessWidget {
                           onTap: () => controller.validateForm(context),
                         ),
                       ),
-                      Expanded(child: Container()),
+                      /*  Expanded(child: Container()),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -95,7 +95,7 @@ class LoginView extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  controller.launchWhatsApp();
+                                  /* controller.launchWhatsApp(); */
                                 },
                                 child: const Text(
                                   '¿Necesitas ayuda?',
@@ -112,7 +112,7 @@ class LoginView extends StatelessWidget {
                       ),
                       SizedBox(
                         height: kSizeSmallLittle.h,
-                      )
+                      ) */
                     ],
                   ),
                 ),

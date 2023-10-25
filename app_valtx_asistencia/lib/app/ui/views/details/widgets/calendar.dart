@@ -14,7 +14,7 @@ class Calendar extends StatelessWidget {
     return GetBuilder<DetailsController>(
       builder: (controller) => Container(
         margin: EdgeInsets.symmetric(horizontal: kMarginNormalApp.w),
-        height: kSizeSmallAmple.h,
+        height: kSizeNormalAmple.h,
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [
