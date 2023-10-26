@@ -35,13 +35,14 @@ class AlertRegisterBad extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: kSizeSmallLittle.h),
-                Text('De tener algún inconveniente comuníquese con su Líder Técnico.',
-                    textScaleFactor: 1,
-                    textAlign: TextAlign.center,
-                    style: AppTextStyle(context).medium14(
-                      color: AppColors.primary,
-                    ),
-                    ),
+                Text(
+                  'De tener algún inconveniente comuníquese con su jefe directo',
+                  textScaleFactor: 1,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle(context).medium14(
+                    color: AppColors.primary,
+                  ),
+                ),
               ],
             ),
           );
